@@ -2,6 +2,7 @@ import React from "react";
 import "./navMenu.css";
 
 
+//В домашней работе нужно сделать состояние state для скрытия и отображения бургера
 export function NavMenu() {
     return (
         <nav className="main__nav nav">
