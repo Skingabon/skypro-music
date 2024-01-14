@@ -2,6 +2,7 @@ import React from "react";
 import "./centerBlock.css"
 import { Search } from "../Search/Search";
 import { CenterBlockFilter } from "../CenterBlockFilter/CenterBlockFilter";
+import { Track } from "../Track/Track";
 
 
 //В домешней работе нужно реализовать отображение скелетонов в течении 5 секунд на время загрузки данных
@@ -10,13 +11,27 @@ import { CenterBlockFilter } from "../CenterBlockFilter/CenterBlockFilter";
         //а дальше его вниз по приложению с помощью props в компоненты пробрасывать (в компонент списка плей треков, компонент плей-листов, компонент музыкального плеера)
         //и уже там на основе состояния isLoading показывать скелетоны или нет
 
+
+
+
 export function CenterBlock() {
+    const data = [{
+       name: " Guilt",
+       autor: "Nero",
+       album: "Welcome Reality",
+       time: "4:44",
+           },
+           
+]
     return (
         <div className="main__centerblock centerblock">
             <Search />
             <h2 className="centerblock__h2">Треки</h2>
             <CenterBlockFilter />
             <div className="centerblock__content">
+
+                   
+
                 <div className="content__title playlist-title">
                     <div className="playlist-title__col col01">Трек</div>
                     <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
@@ -29,36 +44,11 @@ export function CenterBlock() {
                 </div>
                 <div className="content__playlist playlist">
                     <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Guilt <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Nero
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Welcome Reality
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">4:44</span>
-                            </div>
-                        </div>
+
+                    {data.map((elem, index) => (<Track key={index} name={elem.name} autor={elem.autor} album={elem.album} time={elem.time} />))}
+                    
+
+
                     </div>
 
                     <div className="playlist__item">
