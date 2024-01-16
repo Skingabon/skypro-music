@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./track.css"
 
 export function Track({name, autor, coment, album, time}) {
    

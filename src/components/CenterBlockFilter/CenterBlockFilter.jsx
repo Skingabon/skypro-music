@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./centerBlockFilter.css";
 
 //завершающая часть домашней работы
@@ -11,13 +11,77 @@ import "./centerBlockFilter.css";
 //список треков и список исполнителей хранить в массиве!!! чтобы в списке категорий менялись данные в зависимости от выбранной категории
 
 
+const authorData = [
+    "Nero",
+    "Dynoro",
+    "Ali Bakgor",
+    "Стоункат",
+    "Calvin Harris",
+    "Tom Boxer",
+    "Jaded",
+    "Blue Foundation"
+]
+
+const yearData = [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+]
+
+const genreData = [
+    'Elektro',
+    'Pop',
+    'Trance',
+    'Folk',
+    'Shanson'
+]
+
 export function CenterBlockFilter() {
+    const [activeFilter, setActiveFilter] = useState(null)
+
+const handleActiveFilter = (nameFilter) => {
+    if (nameFilter === activeFilter) {
+        setActiveFilter(null) 
+        return
+         }
+         setActiveFilter(nameFilter) 
+ 
+}
+
     return (
         <div className="centerblock__filter filter">
             <div className="filter__title">Искать по:</div>
-            <div className="filter__button button-author _btn-text">
-                исполнителю
+
+            <div className="filter-container">
+
+                <div className="filter__button button-author _btn-text" onClick={() => handleActiveFilter("author")}>
+                    исполнителю
+                </div>
+
+                {activeFilter === "author" && (
+                    <ul className="filter-list">
+                        {authorData.map((elem, index) => (
+
+                            <li key={index} className="filter-list__item">
+
+                                {elem}
+
+                            </li>
+                        ))}
+
+                    </ul>
+                )}
+
             </div>
+
+
+
+
             <div className="filter__button button-year _btn-text">
                 году выпуска
             </div>
