@@ -8,21 +8,120 @@ import { Track } from "../Track/Track";
 //В домешней работе нужно реализовать отображение скелетонов в течении 5 секунд на время загрузки данных
 //Нужно соединить состояние, которое использовал в бургер-меню, использовать use-effect (поскольку нужно замокать loading) и в нем изменять состояние
 //Дальше нужно использовать props и технику поднятия состояния (или lifting state-up), чтобы на самом верхнем уровне  приложения это состояние загрузки хранить
-        //а дальше его вниз по приложению с помощью props в компоненты пробрасывать (в компонент списка плей треков, компонент плей-листов, компонент музыкального плеера)
-        //и уже там на основе состояния isLoading показывать скелетоны или нет
+//а дальше его вниз по приложению с помощью props в компоненты пробрасывать (в компонент списка плей треков, компонент плей-листов, компонент музыкального плеера)
+//и уже там на основе состояния isLoading показывать скелетоны или нет
 
 
 
 
 export function CenterBlock() {
-    const data = [{
-       name: " Guilt",
-       autor: "Nero",
-       album: "Welcome Reality",
-       time: "4:44",
-           },
-           
-]
+    const data = [
+        {
+            name: "Guilt",
+            coment: "",
+            autor: "Nero",
+            album: "Welcome Reality",
+            time: "4:44",
+        },
+        {
+            name: "Elektro",
+            coment: "",
+            autor: "Dynoro, Outwork, Mr. Gee",
+            album: "Elektro",
+            time: "2:22",
+        },
+        {
+            name: "I’m Fire",
+            coment: "",
+            autor: "Ali Bakgor",
+            album: "I’m Fire",
+            time: "2:22",
+        },
+        {
+            name: "Non Stop",
+            coment: "",
+            autor: " Стоункат, Psychopath",
+            album: "Non Stop",
+            time: "4:12",
+        },
+        {
+            name: "Knives n Cherries",
+            coment: "",
+            autor: "minthaze",
+            album: "Captivating",
+            time: "1:48",
+        },
+        {
+            name: "Knives n Cherries",
+            coment: "",
+            autor: "minthaze",
+            album: "Captivating",
+            time: "1:48",
+        },
+        {
+            name: "Knives n Cherries",
+            coment: "",
+            autor: "minthaze",
+            album: "Captivating",
+            time: "1:48",
+        },
+        {
+            name: "Knives n Cherries",
+            coment: "",
+            autor: "minthaze",
+            album: "Captivating",
+            time: "1:48",
+        },
+        {
+            name: "Knives n Cherries",
+            coment: "",
+            autor: "minthaze",
+            album: "Captivating",
+            time: "1:48",
+        },
+        {
+            name: "Knives n Cherries",
+            coment: "",
+            autor: "minthaze",
+            album: "Captivating",
+            time: "1:48",
+        },
+        {
+            name: "How Deep Is Your Love",
+            coment: "",
+            autor: "Calvin Harris, Disciples",
+            album: "How Deep Is Your Love",
+            time: "3:32",
+        },
+        {
+            name: "Morena",
+            coment: "",
+            autor: "Tom Boxer",
+            album: "Soundz Made in Romania",
+            time: "3:36",
+        },
+        {
+            name: "Run Run",
+            coment: " (feat. AR/CO)",
+            autor: "Jaded, Will Clarke, AR/CO",
+            album: "Run Run",
+            time: "2:54",
+        },
+        {
+            name: "Eyes on Fire",
+            coment: " (Zeds Dead Remix)",
+            autor: "Blue Foundation, Zeds Dead",
+            album: "Eyes on Fire",
+            time: "5:20",
+        },
+        {
+            name: "Mucho Bien",
+            coment: " (Hi Profile Remix)",
+            autor: "HYBIT, Mr. Black, Offer Nissim, Hi Profile",
+            album: "Mucho Bien",
+            time: "3:41",
+        },
+    ]
     return (
         <div className="main__centerblock centerblock">
             <Search />
@@ -30,7 +129,7 @@ export function CenterBlock() {
             <CenterBlockFilter />
             <div className="centerblock__content">
 
-                   
+
 
                 <div className="content__title playlist-title">
                     <div className="playlist-title__col col01">Трек</div>
@@ -45,520 +144,11 @@ export function CenterBlock() {
                 <div className="content__playlist playlist">
                     <div className="playlist__item">
 
-                    {data.map((elem, index) => (<Track key={index} name={elem.name} autor={elem.autor} album={elem.album} time={elem.time} />))}
-                    
-
+                        {data.map((elem, index) => (<Track key={index} name={elem.name} coment={elem.coment} autor={elem.autor} album={elem.album} time={elem.time} />))}
 
                     </div>
 
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Elektro <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Dynoro, Outwork, Mr. Gee
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Elektro
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">2:22</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        I’m Fire <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Ali Bakgor
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    I’m Fire
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">2:22</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Non Stop
-                                        <span className="track__title-span">(Remix)</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Стоункат, Psychopath
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Non Stop
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">4:12</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Run Run
-                                        <span className="track__title-span">
-                                            (feat. AR/CO)
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Jaded, Will Clarke, AR/CO
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Run Run
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">2:54</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Eyes on Fire
-                                        <span className="track__title-span">
-                                            (Zeds Dead Remix)
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Blue Foundation, Zeds Dead
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Eyes on Fire
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">5:20</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Mucho Bien
-                                        <span className="track__title-span">
-                                            (Hi Profile Remix)
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    HYBIT, Mr. Black, Offer Nissim, Hi Profile
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Mucho Bien
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">3:41</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Knives n Cherries
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    minthaze
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Captivating
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">1:48</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        How Deep Is Your Love
-                                        <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Calvin Harris, Disciples
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    How Deep Is Your Love
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">3:32</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="playlist__item">
-                        <div className="playlist__track track">
-                            <div className="track__title">
-                                <div className="track__title-image">
-                                    <svg className="track__title-svg" alt="music">
-                                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-                                    </svg>
-                                </div>
-                                <div className="track__title-text">
-                                    <a className="track__title-link" href="http://">
-                                        Morena <span className="track__title-span"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="track__author">
-                                <a className="track__author-link" href="http://">
-                                    Tom Boxer
-                                </a>
-                            </div>
-                            <div className="track__album">
-                                <a className="track__album-link" href="http://">
-                                    Soundz Made in Romania
-                                </a>
-                            </div>
-                            <div className="track__time">
-                                <svg className="track__time-svg" alt="time">
-                                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-                                </svg>
-                                <span className="track__time-text">3:36</span>
-                            </div>
-                        </div>
-                    </div>
-
+                    {/*     Шаблон разметки 
                     <div className="playlist__item">
                         <div className="playlist__track track">
                             <div className="track__title">
@@ -586,7 +176,7 @@ export function CenterBlock() {
                                 <span className="track__time-text"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
