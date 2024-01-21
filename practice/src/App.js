@@ -1,4 +1,5 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 const todos = {
@@ -36,10 +37,12 @@ const todos = {
 
 function App() {
 
-  console.log("App exec");
+  // console.log("App exec");
+//для текста в инпуте нужно завести состояние.
+  const [value, setValue] = useState('');
 
   const addTodo = () => {
-    alert("clicked")
+    alert(value)
   };
 
   return (
@@ -49,7 +52,19 @@ function App() {
         <li key={todo.id}>{todo.text}</li>
       ))}
     </ul>
-    <input />
+    {/*  
+    1. берем инпут 
+    2. подписываемся на его событие onChange 
+    3. когда это событие onChange происходит - берем из события текущее
+     значение инпута и кладем его в состояния
+    4. потом значение состояния прокидываем в value этого инпута
+     Таким образом у меня в state (в состоянии) лежит то, что пользователь вводит в инпут
+     */}
+    <input 
+    value={value} onChange={(event) => {
+      setValue(event.target.value);
+    }}
+    />
     <button onClick={addTodo}>Добавить</button>
     </>
   );
