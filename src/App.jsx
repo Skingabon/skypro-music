@@ -1,9 +1,11 @@
-import "./App.css";
+// import "./App.css";
+
 import React, { useEffect, useState } from "react";
 import { PlayerBar } from "./components/PlayerBar/PlayerBar";
 import { SideBar } from "./components/SideBar/SideBar";
 import { NavMenu } from "./components/NavMenu/NavMenu";
 import { CenterBlock } from "./components/CenterBlock/CenterBlock";
+import { GlobalStyle } from "./app.styled";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,17 +23,20 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <div className="container">
-        <main className="main">
-          <NavMenu />
-          <CenterBlock />
-          <SideBar />
-        </main>
-        <PlayerBar isLoading={isLoading} />
-        <footer className="footer"></footer>
+    <>
+      <GlobalStyle />
+      <div className="wrapper">
+        <div className="container">
+          <main className="main">
+            <NavMenu />
+            <CenterBlock />
+            <SideBar />
+          </main>
+          <PlayerBar isLoading={isLoading} />
+          <footer className="footer"></footer>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
