@@ -1,25 +1,23 @@
-/* .main__centerblock {
+import styled, { css } from "styled-components";
+
+export const MainCenterBlock = styled.div`
   width: auto;
   -webkit-box-flex: 3;
   -ms-flex-positive: 3;
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
-} */
+`;
 
-
-
-/* .centerblock__h2 {
+export const H2CenterBlock = styled.h2`
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
   letter-spacing: -0.8px;
   margin-bottom: 45px;
-} */
+`;
 
-
-
-/* .centerblock__content {
+export const CenterBlockContent = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,10 +25,9 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-} */
+`;
 
-
-/* .content__title {
+export const ContentTitle = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,10 +42,46 @@
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 24px;
-} */
+`;
 
+export const Col01 = css`
+  width: ${({ $width01 }) => $width01}px;
+`;
 
-/* .content__playlist {
+export const Col02 = css`
+  width: ${({ $width02 }) => $width02}px;
+`;
+
+export const Col03 = css`
+  width: ${({ $width03 }) => $width03}px;
+`;
+
+export const Col04 = css`
+  width: ${({ $width04 }) => $width04}px;
+  text-align: end;
+`;
+
+export const PlayListTitleTrack = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2px;
+  /* color: #696969; */
+  text-transform: uppercase;
+  ${Col02};
+  ${Col03};
+  ${Col04};
+`;
+
+export const PlayListTitleSVG = styled.svg`
+  width: 12px;
+  height: 12px;
+  fill: transparent;
+  stroke: #696969;
+`;
+
+export const ContentPlayList = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,38 +90,4 @@
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
-} */
-
-/* .playlist-title__col {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: 2px;
-  color: #696969;
-  text-transform: uppercase;
-} */
-
-/* .playlist-title__svg {
-  width: 12px;
-  height: 12px;
-  fill: transparent;
-  stroke: #696969;
-} */
-
-/* .col01 {
-  width: 447px;
-} */
-
-/* .col02 {
-  width: 321px;
-} */
-
-/* .col03 {
-  width: 245px;
-} */
-
-/* .col04 {
-  width: 60px;
-  text-align: end;
-} */
+`;
