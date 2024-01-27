@@ -1,6 +1,6 @@
 import React from "react";
 import "./search.css";
-import * as S from "./search.stylerd";
+import * as S from "./search.styled";
 
 export function Search() {
   return (
