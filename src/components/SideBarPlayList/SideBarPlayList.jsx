@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./sideBarPlayList.css";
+import * as S from "./sideBarPlayList.styled";
 
 export function SideBarPlayList() {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,42 +9,30 @@ export function SideBarPlayList() {
   }, 5000);
 
   return (
-    <div className="sidebar__block">
+    <S.SideBarBlock>
       {isLoading ? (
         <img src="img/Category.svg" alt="" />
       ) : (
         <>
-          <div className="sidebar__list">
-            <div className="sidebar__item">
-              <a className="sidebar__link" href="#">
-                <img
-                  className="sidebar__img"
-                  src="img/playlist01.png"
-                  alt="day's playlist"
-                />
-              </a>
-            </div>
-            <div className="sidebar__item">
-              <a className="sidebar__link" href="#">
-                <img
-                  className="sidebar__img"
-                  src="img/playlist02.png"
-                  alt="day's playlist"
-                />
-              </a>
-            </div>
-            <div className="sidebar__item">
-              <a className="sidebar__link" href="#">
-                <img
-                  className="sidebar__img"
-                  src="img/playlist03.png"
-                  alt="day's playlist"
-                />
-              </a>
-            </div>
-          </div>
+          <S.SideBarList>
+            <S.SideBarItem>
+              <S.SideBarLink href="#">
+                <S.SideBarImg src="img/playlist01.png" alt="day's playlist" />
+              </S.SideBarLink>
+            </S.SideBarItem>
+            <S.SideBarItem>
+              <S.SideBarLink href="#">
+                <S.SideBarImg src="img/playlist02.png" alt="day's playlist" />
+              </S.SideBarLink>
+            </S.SideBarItem>
+            <S.SideBarItem>
+              <S.SideBarLink href="#">
+                <S.SideBarImg src="img/playlist03.png" alt="day's playlist" />
+              </S.SideBarLink>
+            </S.SideBarItem>
+          </S.SideBarList>
         </>
       )}
-    </div>
+    </S.SideBarBlock>
   );
 }

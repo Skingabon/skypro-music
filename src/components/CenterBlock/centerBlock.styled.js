@@ -91,3 +91,9 @@ export const ContentPlayList = styled.div`
   flex-direction: column;
   overflow-y: auto;
 `;
+
+export const PlayListItem = styled.div`
+  width: 100%;
+  display: block;
+  margin-bottom: 12px;
+`;

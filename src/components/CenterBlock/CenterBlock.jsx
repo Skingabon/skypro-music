@@ -103,7 +103,7 @@ export function CenterBlock() {
           </S.PlayListTitleTrack>
         </S.ContentTitle>
         <S.ContentPlayList>
-          <div className="playlist__item">
+          <S.PlayListItem>
             {data.map((elem, index) => (
               <Track
                 key={index}
@@ -114,7 +114,7 @@ export function CenterBlock() {
                 time={elem.time}
               />
             ))}
-          </div>
+          </S.PlayListItem>
         </S.ContentPlayList>
       </S.CenterBlockContent>
     </S.MainCenterBlock>

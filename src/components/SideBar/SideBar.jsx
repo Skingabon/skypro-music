@@ -1,21 +1,20 @@
 import React from "react";
-import "./sideBar.css";
+// import "./sideBar.css";
 import { SideBarPlayList } from "../SideBarPlayList/SideBarPlayList";
-
+import * as S from "./sideBar.styled";
 
 export function SideBar() {
-    return (
-
-<div className="main__sidebar sidebar">
-            <div className="sidebar__personal">
-              <p className="sidebar__personal-name">Sergey.Ivanov</p>
-              <div className="sidebar__icon">
-                <svg alt="logout">
-                  <use xlinkHref="img/icon/sprite.svg#logout"></use>
-                </svg>
-              </div>
-            </div>
-            <SideBarPlayList />
-          </div>
-    );
+  return (
+    <S.MainSidebar>
+      <S.SidebarPersonal>
+        <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
+        <S.SidebarIcon>
+          <svg alt="logout">
+            <use xlinkHref="img/icon/sprite.svg#logout"></use>
+          </svg>
+        </S.SidebarIcon>
+      </S.SidebarPersonal>
+      <SideBarPlayList />
+    </S.MainSidebar>
+  );
 }
