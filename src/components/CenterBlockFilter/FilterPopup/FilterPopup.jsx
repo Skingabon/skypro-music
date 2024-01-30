@@ -1,5 +1,4 @@
 import React from "react";
-// import "./filterPopup.css";
 import { Filter } from "../../Filter/Filter";
 import * as S from "./filterPopup.styled"
 

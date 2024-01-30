@@ -1,5 +1,4 @@
 import React from "react";
-import "./playerBar.css";
 import * as S from "./PlayerBar.styled";
 
 export function PlayerBar({ isLoading }) {
@@ -25,20 +24,17 @@ export function PlayerBar({ isLoading }) {
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
                 </S.BtnNextSVG>
               </S.BtnNext>
-              {/* <div className="player__btn-repeat _btn-icon"> */}
               <S.BtnRepeat>
                 <S.BtnRepeatSVG alt="repeat">
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
                 </S.BtnRepeatSVG>
               </S.BtnRepeat>
-              {/* <div className="player__btn-shuffle _btn-icon"> */}
               <S.BtnShuffle>
                 <S.BtnShuffleSVG alt="shuffle">
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
                 </S.BtnShuffleSVG>
               </S.BtnShuffle>
             </S.PlayerControl>
-
             <S.PlayerTruckPlay>
               <S.TruckPlayContain>
                 {isLoading ? (
@@ -63,15 +59,12 @@ export function PlayerBar({ isLoading }) {
                   </>
                 )}
               </S.TruckPlayContain>
-
               <S.TruckPlayLikeDis>
-                {/* <div className="track-play__like _btn-icon"> */}
                 <S.TruckPlayLikeDislike>
                   <S.TruckPlayLikeSVG alt="like">
                     <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                   </S.TruckPlayLikeSVG>
                 </S.TruckPlayLikeDislike>
-                {/* <div className="track-play__dislike _btn-icon"> */}
                 <S.TruckPlayDisLike>
                   <S.TruckPlayDisLikeSVG alt="dislike">
                     <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
@@ -87,13 +80,7 @@ export function PlayerBar({ isLoading }) {
                   <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
                 </S.VolumeSVG>
               </S.VolumeImg>
-              {/* <div className="volume__progress _btn"> */}
               <S.VolumeProgress>
-                {/* <input
-                  className="volume__progress-line _btn"
-                  type="range"
-                  name="range"
-                /> */}
                 <S.VolumeProgressLine type="range" name="range" />
               </S.VolumeProgress>
             </S.VolumeContent>

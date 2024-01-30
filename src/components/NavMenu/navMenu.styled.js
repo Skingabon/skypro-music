@@ -14,18 +14,6 @@ export const NavLogo = styled.div`
   margin-bottom: 20px;
 `;
 
-//Очень важные способы передачи стилей
-
-// export const TestNavLogo = styled(NavLogo)`
-//   width: ${({ $width }) => $width}px;
-// `;
-
-// export const TestNavLogo = styled(NavLogo)`
-//   height: 50px;
-//   width: 100px;
-//   background: ${({ $isActive }) => ($isActive ? "red" : "blue")};
-// `;
-
 export const NavBurger = styled.div`
   width: 20px;
   height: 36px;

@@ -1,15 +1,8 @@
 import React from "react";
-// import "./centerBlock.css";
 import { Search } from "../Search/Search";
 import { CenterBlockFilter } from "../CenterBlockFilter/CenterBlockFilter";
 import { Track } from "../Track/Track";
 import * as S from "./centerBlock.styled";
-
-//В домешней работе нужно реализовать отображение скелетонов в течении 5 секунд на время загрузки данных
-//Нужно соединить состояние, которое использовал в бургер-меню, использовать use-effect (поскольку нужно замокать loading) и в нем изменять состояние
-//Дальше нужно использовать props и технику поднятия состояния (или lifting state-up), чтобы на самом верхнем уровне  приложения это состояние загрузки хранить
-//а дальше его вниз по приложению с помощью props в компоненты пробрасывать (в компонент списка плей треков, компонент плей-листов, компонент музыкального плеера)
-//и уже там на основе состояния isLoading показывать скелетоны или нет
 
 export function CenterBlock() {
   const data = [

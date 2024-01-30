@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./navMenu.styled";
 
-//В домашней работе нужно сделать состояние state для скрытия и отображения бургера
+
 export function NavMenu() {
   const [visibleMenu, setVisibleMenu] = useState(false);
   return (
@@ -9,15 +9,11 @@ export function NavMenu() {
       <S.NavLogo>
         <S.LogoImg src="img/logo.png" alt="logo" />
       </S.NavLogo>
-      {/* <S.TestNavLogo $width={2000} /> */}
-      {/* <S.TestNavLogo $isActive={visibleMenu} /> */}
-
       <S.NavBurger onClick={() => setVisibleMenu(!visibleMenu)}>
         <S.BurgerLine />
         <S.BurgerLine />
         <S.BurgerLine />
       </S.NavBurger>
-
       {visibleMenu && (
         <S.NavMenu>
           <S.MenuList>

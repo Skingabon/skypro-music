@@ -1,5 +1,4 @@
 import React from "react";
-import "./filter.css";
 import * as S from "./filter.styled";
 
 export function Filter({ nameFilter, activeFilter, filterData }) {
@@ -15,5 +14,3 @@ export function Filter({ nameFilter, activeFilter, filterData }) {
     </>
   );
 }
-
-//<></> - Реакт фрагмент

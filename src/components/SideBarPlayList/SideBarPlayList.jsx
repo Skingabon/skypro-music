@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./sideBarPlayList.css";
 import * as S from "./sideBarPlayList.styled";
 
 export function SideBarPlayList() {

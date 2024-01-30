@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./centerBlockFilter.css";
 import { FilterPopup } from "./FilterPopup/FilterPopup";
 
 import * as S from "./centerBlockFilter.styled";

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./track.css";
 import * as S from "./track.styled";
 
 export function Track({ name, autor, coment, album, time }) {
