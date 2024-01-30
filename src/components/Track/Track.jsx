@@ -22,28 +22,28 @@ export function Track({ name, autor, coment, album, time }) {
                 <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
               </S.TrackTitleSvg>
             </S.TrackTitleImg>
-            <div className="track__title-text">
+            <S.TrackTitleText>
               <S.TrackTitleLink href="http://">
                 {name} <S.TrackTitleSpan>{coment}</S.TrackTitleSpan>
               </S.TrackTitleLink>
-            </div>
+            </S.TrackTitleText>
           </S.TrackTitle>
-          <div className="track__author">
-            <a className="track__author-link" href="http://">
+          <S.TrackAuthor>
+            <S.TrackAuthorLink href="http://">
               {autor}
-            </a>
-          </div>
-          <div className="track__album">
-            <a className="track__album-link" href="http://">
+            </S.TrackAuthorLink>
+          </S.TrackAuthor>
+          <S.TrackAlbum>
+            <S.TrackAlbumLink href="http://">
               {album}
-            </a>
-          </div>
-          <div className="track__time">
-            <svg className="track__time-svg" alt="time">
+            </S.TrackAlbumLink>
+          </S.TrackAlbum>
+          <S.TrackTime>
+            <S.TrackTimeSvg alt="time">
               <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-            </svg>
-            <span className="track__time-text">{time}</span>
-          </div>
+            </S.TrackTimeSvg>
+            <S.TrackTimeText>{time}</S.TrackTimeText>
+          </S.TrackTime>
         </>
       )}
     </S.PlaylistTrack>

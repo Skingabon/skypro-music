@@ -12,7 +12,7 @@
     text-decoration-line: underline;
   } */
 
-.filter-list__author {
+/* .filter-list__author {
   padding: 90px 34px 34px 34px;
 }
 
@@ -22,12 +22,11 @@
 
 .filter-list__genre {
   padding: 3px 34px 34px 34px;
-}
+} */
 
-.filter-list {
+/* .filter-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   gap: 28px;
   border-radius: 12px;
@@ -36,10 +35,10 @@
   overflow-y: auto;
   position: absolute;
   left: 0;
-  top: 40px;
-}
+  padding: 34px;
+} */
 
-.filter-list::-webkit-scrollbar {
+/* .filter-list::-webkit-scrollbar {
   background-color: #4B4949;
   width: 4px;
 }
@@ -47,4 +46,4 @@
 
 .filter-list::-webkit-scrollbar-thumb {
   background-color: #ffffff;
-}
+} */

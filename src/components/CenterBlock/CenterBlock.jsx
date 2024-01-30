@@ -1,5 +1,5 @@
 import React from "react";
-import "./centerBlock.css";
+// import "./centerBlock.css";
 import { Search } from "../Search/Search";
 import { CenterBlockFilter } from "../CenterBlockFilter/CenterBlockFilter";
 import { Track } from "../Track/Track";
@@ -91,12 +91,13 @@ export function CenterBlock() {
       <CenterBlockFilter />
       <S.CenterBlockContent>
         <S.ContentTitle>
-          <S.PlayListTitleTrack>Трек</S.PlayListTitleTrack>
-          <S.PlayListTitleTrack $width02={321}>
+          <S.PlayListTitleTrack $width={447}
+          >Трек</S.PlayListTitleTrack>
+          <S.PlayListTitleTrack $width={321}>
             ИСПОЛНИТЕЛЬ
           </S.PlayListTitleTrack>
-          <S.PlayListTitleTrack $width03={245}>АЛЬБОМ</S.PlayListTitleTrack>
-          <S.PlayListTitleTrack $width04={60}>
+          <S.PlayListTitleTrack $width={245}>АЛЬБОМ</S.PlayListTitleTrack>
+          <S.PlayListTitleTrack $width={60}>
             <S.PlayListTitleSVG alt="time">
               <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
             </S.PlayListTitleSVG>

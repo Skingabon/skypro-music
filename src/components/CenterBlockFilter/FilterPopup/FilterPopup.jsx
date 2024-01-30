@@ -1,26 +1,26 @@
 import React from "react";
-import "./filterPopup.css";
+// import "./filterPopup.css";
 import { Filter } from "../../Filter/Filter";
+import * as S from "./filterPopup.styled"
 
 export function FilterPopup({ handleActiveFilter, activeFilter, dataFilter, nameFilter, nameBtn }) {
 
 
   return (
-    <div className={`filter-container`}>
-      <div
-        className={`filter__button button-${nameFilter} _btn-text ${
-          activeFilter === nameFilter ? "active" : ""
-        }  `}
+    <S.FilterContainer>
+      <S.FilterButton
+        className={`_btn-text`}
         onClick={() => handleActiveFilter(nameFilter)}
+        $active={activeFilter === nameFilter}
       >
         {nameBtn}
-      </div>
+      </S.FilterButton>
 
       <Filter
         nameFilter={nameFilter}
         activeFilter={activeFilter}
         filterData={dataFilter}
       />
-    </div>
+    </S.FilterContainer>
   );
 }

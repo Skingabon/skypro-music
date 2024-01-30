@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MainCenterBlock = styled.div`
   width: auto;
@@ -44,34 +44,15 @@ export const ContentTitle = styled.div`
   margin-bottom: 24px;
 `;
 
-export const Col01 = css`
-  width: ${({ $width01 }) => $width01}px;
-`;
-
-export const Col02 = css`
-  width: ${({ $width02 }) => $width02}px;
-`;
-
-export const Col03 = css`
-  width: ${({ $width03 }) => $width03}px;
-`;
-
-export const Col04 = css`
-  width: ${({ $width04 }) => $width04}px;
-  text-align: end;
-`;
-
 export const PlayListTitleTrack = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 2px;
-  /* color: #696969; */
+  color: #696969;
   text-transform: uppercase;
-  ${Col02};
-  ${Col03};
-  ${Col04};
+  width: ${({$width}) => $width}px;
 `;
 
 export const PlayListTitleSVG = styled.svg`

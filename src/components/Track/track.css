@@ -76,7 +76,7 @@
     color: #4e4e4e;
 } */
 
-.track__author {
+/* .track__author {
   width: 321px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,42 +84,43 @@
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-}
+} */
 
-.track__author-link {
+/* .track__author-link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
   text-align: left;
-}
+} */
 
-.track__album {
+/* .track__album {
   width: 245px;
-}
+} */
 
-.track__album-link {
+/* .track__album-link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #696969;
-}
+} */
 
+/* 
 .track__time-svg {
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
-}
+} */
 
-.track__time-text {
+/* .track__time-text {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: right;
   color: #696969;
-}
+} */

@@ -6,11 +6,11 @@ export function Filter({ nameFilter, activeFilter, filterData }) {
   return (
     <>
       {activeFilter === nameFilter && (
-        <ul className={`filter-list__${nameFilter}  filter-list`}>
+        <S.FilterList>
           {filterData.map((elem, index) => (
             <S.FilterListItem key={index}>{elem}</S.FilterListItem>
           ))}
-        </ul>
+        </S.FilterList>
       )}
     </>
   );
