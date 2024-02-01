@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./centerBlockFilter.css";
-import { Filter } from "../Filter/Filter";
+import { FilterPopup } from "./FilterPopup/FilterPopup";
+
+import * as S from "./centerBlockFilter.styled";
 
 //завершающая часть домашней работы
 //pop-up при клике на категории в фильтрах - это самая сложная и самая интресная часть домашки!!!
@@ -10,69 +11,60 @@ import { Filter } from "../Filter/Filter";
 //года и жанры захардкодить
 //элементы в списке должны юыть интерактивные, но без логики кликабельности
 //список треков и список исполнителей хранить в массиве!!! чтобы в списке категорий менялись данные в зависимости от выбранной категории
-
 const authorData = [
-    "Nero",
-    "Dynoro",
-    "Ali Bakgor",
-    "Стоункат",
-    "Calvin Harris",
-    "Tom Boxer",
-    "Jaded",
-    "Blue Foundation",
+  "Nero",
+  "Dynoro",
+  "Ali Bakgor",
+  "Стоункат",
+  "Calvin Harris",
+  "Tom Boxer",
+  "Jaded",
+  "Blue Foundation",
 ];
-
-const yearData = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
 
 const genreData = ["Elektro", "Pop", "Trance", "Folk", "Shanson"];
 
+const yearData = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
+
+
+
 export function CenterBlockFilter() {
-    const [activeFilter, setActiveFilter] = useState(null);
+  const [activeFilter, setActiveFilter] = useState(null);
 
-    const handleActiveFilter = (nameFilter) => {
-        if (nameFilter === activeFilter) {
-            setActiveFilter(null);
-            return;
-        }
-        setActiveFilter(nameFilter);
-    };
+  const handleActiveFilter = (nameFilter) => {
+    if (nameFilter === activeFilter) {
+      setActiveFilter(null);
+      return;
+    }
+    setActiveFilter(nameFilter);
+  };
 
-    return (
-        <div className="centerblock__filter filter">
-            <div className="filter__title">Искать по:</div>
+  return (
+    <S.CenterBlockFilter>
+      <S.FilterTitle>Искать по:</S.FilterTitle>
+      <FilterPopup
+        nameBtn={"исполнителю"}
+        nameFilter={"author"}
+        dataFilter={authorData}
+        handleActiveFilter={handleActiveFilter}
+        activeFilter={activeFilter}
+      />
 
-            <div className="filter-container__author">
+      <FilterPopup
+        nameBtn={"жанру"}
+        nameFilter={"genre"}
+        dataFilter={genreData}
+        handleActiveFilter={handleActiveFilter}
+        activeFilter={activeFilter}
+      />
 
-                <div
-                    className={`filter__button button-author _btn-text ${activeFilter === "author" ?  "active" : ""}  `}
-                    onClick={() => handleActiveFilter("author")}
-                >
-                    исполнителю
-                </div>
-
-                <Filter nameFilter={"author"} activeFilter={activeFilter} filterData={authorData} />
-            </div>
-
-            <div className="filter-container__year">
-                <div
-                    className={`filter__button button-year _btn-text ${activeFilter === "year" ?  "active" : ""}  `}
-                    onClick={() => handleActiveFilter("year")}
-                >
-                    году выпуска
-                </div>
-                <Filter nameFilter={"year"} activeFilter={activeFilter} filterData={yearData} />
-            </div>
-
-            <div className="filter-container__genre">
-                <div
-                    className={`filter__button button-genre _btn-text ${activeFilter === "genre" ?  "active" : ""}  `}
-                    onClick={() => handleActiveFilter("genre")}
-                >
-                    жанру
-                </div>
-                <Filter nameFilter={"genre"} activeFilter={activeFilter} filterData={genreData} />
-            </div>
-
-        </div>
-    );
+      <FilterPopup
+        nameBtn={"году выпуска"}
+        nameFilter={"year"}
+        dataFilter={yearData}
+        handleActiveFilter={handleActiveFilter}
+        activeFilter={activeFilter}
+      />
+    </S.CenterBlockFilter>
+  );
 }
