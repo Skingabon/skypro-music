@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Main = () =>{
+export const NotFound = () => {
     return (
 <div>
-    <h1>Main</h1>
+    <h1>404 Page ot found</h1>
 </div>
     );
 };
