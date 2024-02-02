@@ -2,6 +2,7 @@ import React from "react";
 import logo from './logo.svg';
 import './App.css';
 import { AppRoutes } from "./routes";
+import { NavBar } from "./components/nav-bar";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         >
           Learn React
         </a>
+        <NavBar />
         <AppRoutes/>
       </header>
     </div>
