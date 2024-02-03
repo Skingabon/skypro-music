@@ -6,6 +6,7 @@ import { SideBar } from "./components/SideBar/SideBar";
 import { NavMenu } from "./components/NavMenu/NavMenu";
 import { CenterBlock } from "./components/CenterBlock/CenterBlock";
 import { GlobalStyle } from "./app.styled";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,0 +1,9 @@
+import React from "react";
+
+export const Category = () => {
+    return (
+        <div>
+            <h1>Category</h1>
+        </div>
+    )
+}
