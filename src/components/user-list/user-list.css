@@ -1,0 +1,13 @@
+.UserList__list-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .UserList__list-item + .UserList__list-item {
+    margin-top: 20px;
+  }
+  
+  .UserList__name {
+    margin: 0;
+  }
