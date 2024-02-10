@@ -3,8 +3,10 @@ import { Search } from "../Search/Search";
 import { CenterBlockFilter } from "../CenterBlockFilter/CenterBlockFilter";
 import { Track } from "../Track/Track";
 import * as S from "./centerBlock.styled";
+import { PlaylistTrack } from "../Track/track.styled";
 
-export function CenterBlock() {
+export function CenterBlock({ isLoading, tracks }) {
+
   const data = [
     {
       name: "Guilt",
@@ -98,16 +100,21 @@ export function CenterBlock() {
         </S.ContentTitle>
         <S.ContentPlayList>
           <S.PlayListItem>
-            {data.map((elem, index) => (
-              <Track
-                key={index}
-                name={elem.name}
-                coment={elem.coment}
-                autor={elem.autor}
-                album={elem.album}
-                time={elem.time}
-              />
-            ))}
+            {isLoading ? (data.map((d, i) => <PlaylistTrack key={i}><img src="img/PlayList.svg" alt="" /></PlaylistTrack>)) : (
+              tracks.map((elem, index) => (
+                <Track
+                  key={index}
+                  name={elem.name}
+                  coment={elem.id}
+                  autor={elem.author}
+                  album={elem.album}
+                  time={elem.duration_in_seconds
+                  }
+                />
+              ))
+            )}
+
+
           </S.PlayListItem>
         </S.ContentPlayList>
       </S.CenterBlockContent>
