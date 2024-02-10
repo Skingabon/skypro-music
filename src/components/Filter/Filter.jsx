@@ -1,21 +1,16 @@
 import React from "react";
-import "./filter.css"
+import * as S from "./filter.styled";
 
-export function Filter({nameFilter, activeFilter, filterData}) {
-    return (<>
-    {activeFilter === nameFilter && (
-            <ul className={`filter-list__${nameFilter}  filter-list`}>
-              {filterData.map((elem, index) => (
-                <li key={index} className="filter-list__item">
-                  {elem}
-                </li>
-              ))}
-            </ul>
-          )} 
+export function Filter({ nameFilter, activeFilter, filterData }) {
+  return (
+    <>
+      {activeFilter === nameFilter && (
+        <S.FilterList>
+          {filterData.map((elem, index) => (
+            <S.FilterListItem key={index}>{elem}</S.FilterListItem>
+          ))}
+        </S.FilterList>
+      )}
     </>
-        
-    )
+  );
 }
-
-
-//<></> - Реакт фрагмент
