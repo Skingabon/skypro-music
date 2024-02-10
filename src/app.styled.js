@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -106,4 +106,17 @@ export const GlobalStyle = createGlobalStyle`
     -ms-flex-pack: justify;
     justify-content: space-between;
   }
+
+`;
+
+export const Button = styled.button`
+background: rgb(88, 14, 162);
+border-radius: 6px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 16px 8px;
+min-width: 200px;
+color: rgb(255, 255, 255);
+font-size: 18px;
 `;

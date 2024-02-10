@@ -32,5 +32,3 @@ export const AppRoutes = () => {
         </Routes>
     );
 };
-
-// Сделать динамические страницы (использовать useParams) 
