@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../app.styled";
+import { Container } from "../NotFound/notFound.styled";
 
 export const Login = ({ setUser }) => {
     const navigate = useNavigate()
@@ -8,11 +10,17 @@ export const Login = ({ setUser }) => {
         setUser("tim")
         navigate("/")
     };
+    const regUser = () => {
+        navigate("/Registration")
+    };
 
     return (
-        <div>
+        <div className="wrapper">
+        <Container className="container">
             <h1>Login</h1>
-            <button onClick={loginUser}>Login</button>
+            <Button onClick={loginUser}>Login</Button>
+            <Button onClick={regUser}>Registration</Button>
+            </Container>
         </div>
     )
 }
