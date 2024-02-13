@@ -3,10 +3,22 @@ import { NavMenu } from "../../components/NavMenu/NavMenu";
 import { SideBar } from "../../components/SideBar/SideBar";
 import { PlayerBar } from "../../components/PlayerBar/PlayerBar";
 import { useParams } from "react-router-dom";
+import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
+import { getTracks } from "../../Api/tracks";
+import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 
 export const Category = () => {
     const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
+    const [tracks, setTracks] = useState([])
+  
+    useEffect(() => {
+      setIsLoading(true)
+      getTracks().then((data) => {
+        setTracks(data)
+        setIsLoading(false)
+      })
+    }, []);
 
     //   //1. При использовании setTimeout внутри useEffect с пустым массивом зависимостей ([]), мы гарантируем, что setTimeout будет запущен только один раз после монтирования компонента. Это предотвращает многократное создание таймеров при обновлении компонента.
   
@@ -22,20 +34,17 @@ export const Category = () => {
   
     return (
       <>
-        {/* <GlobalStyle/> */}
-        <div className="wrapper">
-          <div className="container">
-            <main className="main">
+        <Wrapper>
+        <Container>
+          <MainContainer>
               <NavMenu />
-              {/* <CenterBlock /> */}
-              <h1>Category {params.id}</h1>
-
+              <CenterBlock isLoading={isLoading} tracks={tracks} heading={`Category ${params.id}`}/>
               <SideBar />
-            </main>
-            <PlayerBar isLoading={isLoading} />
-            <footer className="footer"></footer>
-          </div>
-        </div>
+              </MainContainer>
+          <PlayerBar isLoading={isLoading} />
+          <Footer />
+        </Container>
+      </Wrapper>
       </>
     );
 }

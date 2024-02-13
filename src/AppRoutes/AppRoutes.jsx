@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router";
-import { Main } from "../pages/Main/Main";
 import { Registration } from "../pages/Registration/Registration";
 import { Login } from "../pages/Login/Login";
 import { NotFound } from "../pages/NotFound/NotFound";
 import { Favorites } from "../pages/Favorites/Favorites";
 import { Category } from "../pages/Category/Category"
 import { ProtectedRoute } from "./ProtectedRoutes";
+import { Main } from "../pages/Main/Main";
 
 
 export const AppRoutes = () => {

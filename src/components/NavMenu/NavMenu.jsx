@@ -9,7 +9,7 @@ export function NavMenu() {
   return (
     <S.MainNav>
       <S.NavLogo>
-        <S.LogoImg src="img/logo.png" alt="logo" />
+        <S.LogoImg src="/img/logo.png" alt="logo" />
       </S.NavLogo>
       <S.NavBurger onClick={() => setVisibleMenu(!visibleMenu)}>
         <S.BurgerLine />
@@ -27,14 +27,15 @@ export function NavMenu() {
             </S.MenuItem>
 
             <S.MenuItem>
-              <S.MenuLink $active={window.location.pathname === "/favorites"} to="/favorites">
+              <S.MenuLink $active={window.location.pathname === "/favorites"} to="/Favorites">
                 Мои треки
               </S.MenuLink>
             </S.MenuItem>
 
 
             <S.MenuItem>
-              <S.MenuLink href="../signin.html">Войти</S.MenuLink>
+              <S.MenuLink to="/Login">
+                Выйти</S.MenuLink>
             </S.MenuItem>
           </S.MenuList>
         </S.NavMenu>
