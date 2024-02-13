@@ -4,6 +4,7 @@ import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { SideBar } from "../../components/SideBar/SideBar";
 import { PlayerBar } from "../../components/PlayerBar/PlayerBar";
 import { getTracks } from "../../Api/tracks";
+import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 
 
 
@@ -36,17 +37,17 @@ export const Main = () => {
   return (
     <>
       {/* <GlobalStyle/> */}
-      <div className="wrapper">
-        <div className="container">
-          <main className="main">
+      <Wrapper>
+        <Container>
+          <MainContainer>
             <NavMenu />
-            <CenterBlock isLoading={isLoading} tracks={tracks} />
+            <CenterBlock isLoading={isLoading} tracks={tracks} heading={"Треки"}  />
             <SideBar />
-          </main>
+          </MainContainer>
           <PlayerBar isLoading={isLoading} />
-          <footer className="footer"></footer>
-        </div>
-      </div>
+          <Footer />
+        </Container>
+      </Wrapper>
     </>
   );
 };

@@ -47,21 +47,7 @@ export const GlobalStyle = createGlobalStyle`
     color: #ffffff;
   }
   
-  .wrapper {
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-    background-color: #383838;
-  }
-  
-  .container {
-    max-width: 1920px;
-    height: 100vh;
-    margin: 0 auto;
-    position: relative;
-    background-color: #181818;
-  }
-  
+   
   ._btn-text:hover {
     border-color: #d9b6ff;
     color: #d9b6ff;
@@ -93,21 +79,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
   
-  .main {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-  }
-
-`;
+ `;
 
 export const Button = styled.button`
 background: rgb(88, 14, 162);
@@ -119,4 +91,37 @@ padding: 16px 8px;
 min-width: 200px;
 color: rgb(255, 255, 255);
 font-size: 18px;
+`;
+
+export const Wrapper = styled.div`
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    background-color: #383838;
+`;
+
+export const Container = styled.div`
+    max-width: 1920px;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    background-color: #181818;
+`;
+
+export const MainContainer = styled.main`
+ -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+`;
+
+export const Footer = styled.footer`
+
 `;

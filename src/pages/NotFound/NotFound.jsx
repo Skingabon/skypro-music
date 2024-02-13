@@ -15,7 +15,7 @@ export const NotFound = () => {
         <div className="wrapper">
             <Container className="container">
                 <h1>NotFound </h1>
-                <use xlinkHref="img/icon/sprite.svg#icon-pause-white"></use>
+                {/* <use xlinkHref="img/icon/sprite.svg#icon-pause-white"></use> */}
 
                 <Button onClick={loginUser} >Главная</Button>
                 <Button onClick={regUser}>Регистрация</Button>

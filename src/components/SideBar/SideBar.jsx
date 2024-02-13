@@ -9,7 +9,7 @@ export function SideBar() {
         <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
         <S.SidebarIcon>
           <svg alt="logout">
-            <use xlinkHref="img/icon/sprite.svg#logout"></use>
+            <use xlinkHref="/img/icon/sprite.svg#logout"></use>
           </svg>
         </S.SidebarIcon>
       </S.SidebarPersonal>
