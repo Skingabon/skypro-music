@@ -12,12 +12,13 @@ import { Main } from "../pages/Main/Main";
 export const AppRoutes = () => {
 
     const [user, setUser] = useState(localStorage.getItem("token"));
+    const [currentTrack, setCurrentTrack] = useState(null);
 
     return (
         <Routes>
             <Route element={<ProtectedRoute isAllowed={user} />}  >
            
-                <Route path="/" element={<Main />} />
+                <Route path="/" element={<Main currentTrack={currentTrack} setCurrentTrack={setCurrentTrack}/>} />
                 <Route path="/category/:id" element={<Category />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="*" element={<NotFound />} />

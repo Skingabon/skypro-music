@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./PlayerBar.styled";
 
-export function PlayerBar({ isLoading }) {
+export function PlayerBar({ isLoading, currentTrack }) {
   return (
     <S.Bar>
       <S.BarContent>
@@ -48,12 +48,12 @@ export function PlayerBar({ isLoading }) {
                     </S.TruckPlayImg>
                     <S.TruckPlayAuthor>
                       <S.TruckPlayAuthorLink href="http://">
-                        Ты та...
+                       {currentTrack.name}
                       </S.TruckPlayAuthorLink>
                     </S.TruckPlayAuthor>
                     <S.TruckPlayAlbum>
                       <S.TruckPlayAlbumLink href="http://">
-                        Баста
+                      {currentTrack.autor}
                       </S.TruckPlayAlbumLink>
                     </S.TruckPlayAlbum>
                   </>

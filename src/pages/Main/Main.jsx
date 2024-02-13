@@ -8,7 +8,7 @@ import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 
 
 
-export const Main = () => {
+export const Main = ( {currentTrack, setCurrentTrack} ) => {
   const [isLoading, setIsLoading] = useState(true);
 
   //   //1. При использовании setTimeout внутри useEffect с пустым массивом зависимостей ([]), мы гарантируем, что setTimeout будет запущен только один раз после монтирования компонента. Это предотвращает многократное создание таймеров при обновлении компонента.
@@ -26,7 +26,7 @@ export const Main = () => {
     })
   }, []);
 
-  console.log(tracks);
+  console.log(currentTrack);
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -41,10 +41,10 @@ export const Main = () => {
         <Container>
           <MainContainer>
             <NavMenu />
-            <CenterBlock isLoading={isLoading} tracks={tracks} heading={"Треки"}  />
+            <CenterBlock setCurrentTrack={setCurrentTrack} isLoading={isLoading} tracks={tracks} heading={"Треки"}  />
             <SideBar />
           </MainContainer>
-          <PlayerBar isLoading={isLoading} />
+          {currentTrack && <PlayerBar isLoading={isLoading} currentTrack={currentTrack} />}
           <Footer />
         </Container>
       </Wrapper>

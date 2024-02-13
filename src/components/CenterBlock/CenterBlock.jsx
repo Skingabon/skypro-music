@@ -5,7 +5,7 @@ import { Track } from "../Track/Track";
 import * as S from "./centerBlock.styled";
 import { PlaylistTrack } from "../Track/track.styled";
 
-export function CenterBlock({ isLoading, tracks, heading }) {
+export function CenterBlock({ isLoading, tracks, heading, setCurrentTrack }) {
 
   const data = [
     {
@@ -102,7 +102,7 @@ export function CenterBlock({ isLoading, tracks, heading }) {
           <S.PlayListItem>
             {isLoading ? (data.map((d, i) => <PlaylistTrack key={i}><img src="/img/PlayList.svg" alt="" /></PlaylistTrack>)) : (
               tracks.map((elem, index) => (
-                <Track
+                <Track 
                   key={index}
                   name={elem.name}
                   coment={elem.id}
@@ -110,6 +110,7 @@ export function CenterBlock({ isLoading, tracks, heading }) {
                   album={elem.album}
                   time={elem.duration_in_seconds
                   }
+                  setCurrentTrack={setCurrentTrack}
                 />
               ))
             )}

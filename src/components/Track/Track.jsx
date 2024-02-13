@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./track.styled";
 
-export function Track({ name, autor, coment, album, time}) {
+export function Track({ name, autor, coment, album, time, setCurrentTrack}) {
   //тут settimeout
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -10,7 +10,7 @@ export function Track({ name, autor, coment, album, time}) {
   // }, 5000);
 
   return (
-    <S.PlaylistTrack>
+    <S.PlaylistTrack onClick={() => setCurrentTrack({name, autor})}>
              <>
           <S.TrackTitle>
             <S.TrackTitleImg>
