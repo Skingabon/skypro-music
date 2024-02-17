@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./track.styled";
 
-export function Track({ name, autor, coment, album, time }) {
+export function Track({ name, autor, coment, album, time}) {
   //тут settimeout
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 5000);
+  // setTimeout(() => {
+  //   setIsLoading(false);
+  // }, 5000);
 
   return (
     <S.PlaylistTrack>
-      {isLoading ? (
-        <img src="img/PlayList.svg" alt="" />
-      ) : (
-        <>
+             <>
           <S.TrackTitle>
             <S.TrackTitleImg>
               <S.TrackTitleSvg alt="music">
@@ -44,7 +41,7 @@ export function Track({ name, autor, coment, album, time }) {
             <S.TrackTimeText>{time}</S.TrackTimeText>
           </S.TrackTime>
         </>
-      )}
+      
     </S.PlaylistTrack>
   );
 }

@@ -11,39 +11,39 @@ export function PlayerBar({ isLoading }) {
             <S.PlayerControl>
               <S.BtnPrev>
                 <S.BtnPrevSvg alt="prev">
-                  <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.BtnPrevSvg>
               </S.BtnPrev>
               <S.BtnPlay>
                 <S.BtnPlaySvg alt="play">
-                  <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-play"></use>
                 </S.BtnPlaySvg>
               </S.BtnPlay>
               <S.BtnNext>
                 <S.BtnNextSVG alt="next">
-                  <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.BtnNextSVG>
               </S.BtnNext>
               <S.BtnRepeat>
                 <S.BtnRepeatSVG alt="repeat">
-                  <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
                 </S.BtnRepeatSVG>
               </S.BtnRepeat>
               <S.BtnShuffle>
                 <S.BtnShuffleSVG alt="shuffle">
-                  <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
                 </S.BtnShuffleSVG>
               </S.BtnShuffle>
             </S.PlayerControl>
             <S.PlayerTruckPlay>
               <S.TruckPlayContain>
                 {isLoading ? (
-                  <img src="img/Player_Skeleton.svg" alt="" />
+                  <img src="/img/Player_Skeleton.svg" alt="" />
                 ) : (
                   <>
                     <S.TruckPlayImg>
                       <S.TruckPlaySVG alt="music">
-                        <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+                        <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
                       </S.TruckPlaySVG>
                     </S.TruckPlayImg>
                     <S.TruckPlayAuthor>
@@ -62,12 +62,12 @@ export function PlayerBar({ isLoading }) {
               <S.TruckPlayLikeDis>
                 <S.TruckPlayLikeDislike>
                   <S.TruckPlayLikeSVG alt="like">
-                    <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+                    <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
                   </S.TruckPlayLikeSVG>
                 </S.TruckPlayLikeDislike>
                 <S.TruckPlayDisLike>
                   <S.TruckPlayDisLikeSVG alt="dislike">
-                    <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
+                    <use xlinkHref="/img/icon/sprite.svg#icon-dislike"></use>
                   </S.TruckPlayDisLikeSVG>
                 </S.TruckPlayDisLike>
               </S.TruckPlayLikeDis>
@@ -77,7 +77,7 @@ export function PlayerBar({ isLoading }) {
             <S.VolumeContent>
               <S.VolumeImg>
                 <S.VolumeSVG alt="volume">
-                  <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
+                  <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
                 </S.VolumeSVG>
               </S.VolumeImg>
               <S.VolumeProgress>

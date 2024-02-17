@@ -3,8 +3,10 @@ import { Search } from "../Search/Search";
 import { CenterBlockFilter } from "../CenterBlockFilter/CenterBlockFilter";
 import { Track } from "../Track/Track";
 import * as S from "./centerBlock.styled";
+import { PlaylistTrack } from "../Track/track.styled";
 
-export function CenterBlock() {
+export function CenterBlock({ isLoading, tracks, heading }) {
+
   const data = [
     {
       name: "Guilt",
@@ -80,7 +82,7 @@ export function CenterBlock() {
   return (
     <S.MainCenterBlock>
       <Search />
-      <S.H2CenterBlock>Треки</S.H2CenterBlock>
+      <S.H2CenterBlock>{heading}</S.H2CenterBlock>
       <CenterBlockFilter />
       <S.CenterBlockContent>
         <S.ContentTitle>
@@ -92,22 +94,27 @@ export function CenterBlock() {
           <S.PlayListTitleTrack $width={245}>АЛЬБОМ</S.PlayListTitleTrack>
           <S.PlayListTitleTrack $width={60}>
             <S.PlayListTitleSVG alt="time">
-              <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
+              <use xlinkHref="/img/icon/sprite.svg#icon-watch"></use>
             </S.PlayListTitleSVG>
           </S.PlayListTitleTrack>
         </S.ContentTitle>
         <S.ContentPlayList>
           <S.PlayListItem>
-            {data.map((elem, index) => (
-              <Track
-                key={index}
-                name={elem.name}
-                coment={elem.coment}
-                autor={elem.autor}
-                album={elem.album}
-                time={elem.time}
-              />
-            ))}
+            {isLoading ? (data.map((d, i) => <PlaylistTrack key={i}><img src="/img/PlayList.svg" alt="" /></PlaylistTrack>)) : (
+              tracks.map((elem, index) => (
+                <Track
+                  key={index}
+                  name={elem.name}
+                  coment={elem.id}
+                  autor={elem.author}
+                  album={elem.album}
+                  time={elem.duration_in_seconds
+                  }
+                />
+              ))
+            )}
+
+
           </S.PlayListItem>
         </S.ContentPlayList>
       </S.CenterBlockContent>

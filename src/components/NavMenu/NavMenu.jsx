@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import * as S from "./navMenu.styled";
 
 
+
 export function NavMenu() {
   const [visibleMenu, setVisibleMenu] = useState(false);
+
   return (
     <S.MainNav>
       <S.NavLogo>
-        <S.LogoImg src="img/logo.png" alt="logo" />
+        <S.LogoImg src="/img/logo.png" alt="logo" />
       </S.NavLogo>
       <S.NavBurger onClick={() => setVisibleMenu(!visibleMenu)}>
         <S.BurgerLine />
@@ -18,13 +20,22 @@ export function NavMenu() {
         <S.NavMenu>
           <S.MenuList>
             <S.MenuItem>
-              <S.MenuLink href="#">Главное</S.MenuLink>
+              <S.MenuLink $active={window.location.pathname === "/"} to="/">
+                Главная
+
+              </S.MenuLink>
             </S.MenuItem>
+
             <S.MenuItem>
-              <S.MenuLink href="#">Мой плейлист</S.MenuLink>
+              <S.MenuLink $active={window.location.pathname === "/favorites"} to="/Favorites">
+                Мои треки
+              </S.MenuLink>
             </S.MenuItem>
+
+
             <S.MenuItem>
-              <S.MenuLink href="../signin.html">Войти</S.MenuLink>
+              <S.MenuLink to="/Login">
+                Выйти</S.MenuLink>
             </S.MenuItem>
           </S.MenuList>
         </S.NavMenu>

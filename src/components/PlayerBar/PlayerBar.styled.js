@@ -91,7 +91,7 @@ export const BtnPrev = styled(PlayerBtn)`
 `;
 
 // тут я настледую из DIV, но у меня то svg
-export const BtnPrevSvg = styled(PlayerBtn)`
+export const BtnPrevSvg = styled.svg`
   width: 15px;
   height: 14px;
 `;
@@ -100,7 +100,7 @@ export const BtnPlay = styled(PlayerBtn)`
   margin-right: 23px;
 `;
 
-export const BtnPlaySvg = styled(PlayerBtn)`
+export const BtnPlaySvg = styled.svg`
   width: 22px;
   height: 20px;
   fill: #d9d9d9;
@@ -111,7 +111,7 @@ export const BtnNext = styled(PlayerBtn)`
   fill: #a53939;
 `;
 
-export const BtnNextSVG = styled(PlayerBtn)`
+export const BtnNextSVG = styled.svg`
   width: 15px;
   height: 14px;
   fill: inherit;
@@ -122,7 +122,7 @@ export const BtnRepeat = styled(PlayerBtn)`
   margin-right: 24px;
 `;
 
-export const BtnRepeatSVG = styled(PlayerBtn)`
+export const BtnRepeatSVG = styled.svg`
   width: 18px;
   height: 12px;
   fill: transparent;
@@ -138,7 +138,7 @@ export const BtnShuffle = styled(PlayerBtn)`
   align-items: center;
 `;
 
-export const BtnShuffleSVG = styled(PlayerBtn)`
+export const BtnShuffleSVG = styled.svg`
   width: 19px;
   height: 12px;
   fill: transparent;

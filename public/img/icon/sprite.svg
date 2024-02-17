@@ -56,7 +56,7 @@
         <path d="M1 2V12.5" stroke="#B1B1B1"/>
         <path d="M3 7L12.75 0.937823L12.75 13.0622L3 7Z" fill="#B1B1B1"/>
     </symbol>
-    <symbol id="icon-play" viewBox="0 0 15 20"  xmlns="http://www.w3.org/2000/svg">
+    <symbol width="15" height="19" id="icon-play" viewBox="0 0 15 20"  xmlns="http://www.w3.org/2000/svg">
         <path d="M15 10L-1.01012e-06 0.47372L-1.84293e-06 19.5263L15 10Z" fill="#D9D9D9"/>
     </symbol>
     <symbol id="icon-play-black" viewBox="0 0 15 20"  xmlns="http://www.w3.org/2000/svg">
