@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
 
+
 export function PlayerBar({ isLoading, currentTrack }) {
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const handleStart = () => {
+    console.log(audioRef);
+    audioRef.current.play();
+    setIsPlaying(true);
+
+  };
+
+  const handleStop = () => {
+    console.log(audioRef);
+    audioRef.current.pause();
+    setIsPlaying(false);
+  };
+
+  const togglePlay = isPlaying ? handleStop : handleStart;
+  console.log(currentTrack);
   return (
     <S.Bar>
+      <audio src={currentTrack.track_file} autoPlay controls ref={audioRef}>
+      </audio>
       <S.BarContent>
         <S.BarPlayerProgress />
         <S.BarPlayerBlock>
@@ -14,9 +36,10 @@ export function PlayerBar({ isLoading, currentTrack }) {
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.BtnPrevSvg>
               </S.BtnPrev>
-              <S.BtnPlay>
+
+              <S.BtnPlay onClick={togglePlay}>
                 <S.BtnPlaySvg alt="play">
-                  <use xlinkHref="/img/icon/sprite.svg#icon-play"></use>
+                  <use xlinkHref={`/img/icon/sprite.svg#${isPlaying ? "icon-pause" : "icon-play"}`}></use>
                 </S.BtnPlaySvg>
               </S.BtnPlay>
               <S.BtnNext>
@@ -48,12 +71,12 @@ export function PlayerBar({ isLoading, currentTrack }) {
                     </S.TruckPlayImg>
                     <S.TruckPlayAuthor>
                       <S.TruckPlayAuthorLink href="http://">
-                       {currentTrack.name}
+                        {currentTrack.name}
                       </S.TruckPlayAuthorLink>
                     </S.TruckPlayAuthor>
                     <S.TruckPlayAlbum>
                       <S.TruckPlayAlbumLink href="http://">
-                      {currentTrack.autor}
+                        {currentTrack.autor}
                       </S.TruckPlayAlbumLink>
                     </S.TruckPlayAlbum>
                   </>
