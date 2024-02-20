@@ -19,7 +19,7 @@ export const AppRoutes = () => {
             <Route element={<ProtectedRoute isAllowed={user} />}  >
            
                 <Route path="/" element={<Main currentTrack={currentTrack} setCurrentTrack={setCurrentTrack}/>} />
-                <Route path="/category/:id" element={<Category />} />
+                <Route path="/category/:id" element={<Category currentTrack={currentTrack} setCurrentTrack={setCurrentTrack}/>} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="*" element={<NotFound />} />
             </Route>

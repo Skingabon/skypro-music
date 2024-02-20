@@ -25,6 +25,8 @@ export const CenterBlockContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  overflow-y: auto;
+  height: 700px;
 `;
 
 export const ContentTitle = styled.div`

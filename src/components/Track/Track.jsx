@@ -1,6 +1,11 @@
 import React from "react";
 import * as S from "./track.styled";
 
+function timeFormat(time) {
+const realTime = time/60;
+return `${Math.round(realTime)}:${time%60}`
+}
+
 export function Track({track, setCurrentTrack}) {
 
 
@@ -33,7 +38,7 @@ export function Track({track, setCurrentTrack}) {
             <S.TrackTimeSvg alt="time">
               <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
             </S.TrackTimeSvg>
-            <S.TrackTimeText>{track.duration_in_seconds}</S.TrackTimeText>
+            <S.TrackTimeText>{timeFormat(track.duration_in_seconds)}</S.TrackTimeText>
           </S.TrackTime>
         </>
       

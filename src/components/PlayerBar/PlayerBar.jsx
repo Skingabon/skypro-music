@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
 
 
 export function PlayerBar({ isLoading, currentTrack }) {
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
 
   const handleStart = () => {
@@ -20,13 +20,16 @@ export function PlayerBar({ isLoading, currentTrack }) {
     setIsPlaying(false);
   };
 
+  useEffect (() => {
+setIsPlaying(true)
+  }, [currentTrack])
+
   const togglePlay = isPlaying ? handleStop : handleStart;
   console.log(currentTrack);
   return (
     <S.Bar>
-      <audio src={currentTrack.track_file} autoPlay controls ref={audioRef}>
-      </audio>
-      <S.BarContent>
+      <S.Audio src={currentTrack.track_file} autoPlay controls ref={audioRef} />
+           <S.BarContent>
         <S.BarPlayerProgress />
         <S.BarPlayerBlock>
           <S.BarPlayer>

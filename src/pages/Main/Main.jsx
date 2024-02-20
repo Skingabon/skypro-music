@@ -11,8 +11,6 @@ import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 export const Main = ({ currentTrack, setCurrentTrack }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
-
-  
   const [tracks, setTracks] = useState([])
 
   useEffect(() => {
@@ -26,9 +24,7 @@ export const Main = ({ currentTrack, setCurrentTrack }) => {
       setTracks(data)
       setIsLoading(false)
     })
-
   }, []);
-
 
 
   return (
