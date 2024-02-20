@@ -5,6 +5,7 @@ import * as S from "./PlayerBar.styled";
 export function PlayerBar({ isLoading, currentTrack }) {
 
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
 
   const handleStart = () => {
@@ -25,10 +26,19 @@ setIsPlaying(true)
   }, [currentTrack])
 
   const togglePlay = isPlaying ? handleStop : handleStart;
-  console.log(currentTrack);
+  // console.log(currentTrack);
+
+const toggleLoop = () => {
+setIsLoop(!isLoop)
+}
+const changeVolume = (e) => {
+  audioRef.current.volume = e.target.value/100;
+  console.log(audioRef.volume);
+}
+
   return (
     <S.Bar>
-      <S.Audio src={currentTrack.track_file} autoPlay controls ref={audioRef} />
+      <S.Audio src={currentTrack.track_file} autoPlay controls ref={audioRef} loop={isLoop} />
            <S.BarContent>
         <S.BarPlayerProgress />
         <S.BarPlayerBlock>
@@ -50,8 +60,8 @@ setIsPlaying(true)
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.BtnNextSVG>
               </S.BtnNext>
-              <S.BtnRepeat>
-                <S.BtnRepeatSVG alt="repeat">
+              <S.BtnRepeat onClick={toggleLoop}>
+                <S.BtnRepeatSVG alt="repeat" $isLoop={isLoop} >
                   <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
                 </S.BtnRepeatSVG>
               </S.BtnRepeat>
@@ -107,7 +117,7 @@ setIsPlaying(true)
                 </S.VolumeSVG>
               </S.VolumeImg>
               <S.VolumeProgress>
-                <S.VolumeProgressLine type="range" name="range" />
+                <S.VolumeProgressLine type="range" name="range" onChange={changeVolume}/>
               </S.VolumeProgress>
             </S.VolumeContent>
           </S.BarVolumeBlock>

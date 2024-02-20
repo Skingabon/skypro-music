@@ -126,7 +126,7 @@ export const BtnRepeatSVG = styled.svg`
   width: 18px;
   height: 12px;
   fill: transparent;
-  stroke: #696969;
+  stroke: ${({$isLoop}) => $isLoop ? "#ffffff" : "#696969"};
 `;
 
 export const BtnShuffle = styled(PlayerBtn)`
