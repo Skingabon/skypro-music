@@ -6,17 +6,24 @@ import { getTracks } from "../../Api/tracks";
 import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 
-
-export const Favorites = () => {
+export const Favorites = ({ currentTrack, setCurrentTrack }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [tracks, setTracks] = useState([])
+  const [tracks, setTracks] = useState([]);
+  const [isError, setIsError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true)
-    getTracks().then((data) => {
-      setTracks(data)
-      setIsLoading(false)
-    })
+    setIsLoading(true);
+    getTracks()
+      .then((data) => {
+        return data.json();
+      })
+      .catch((error) => {
+        setIsError(error);
+      })
+      .then((data) => {
+        setTracks(data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -26,13 +33,21 @@ export const Favorites = () => {
         <Container>
           <MainContainer>
             <NavMenu />
-            <CenterBlock isLoading={isLoading} tracks={tracks} heading={"Мои треки"}/>
+            <CenterBlock
+              isError={isError}
+              tracks={tracks}
+              setCurrentTrack={setCurrentTrack}
+              isLoading={isLoading}
+              heading={"Мои треки"}
+            />
             <SideBar />
-            </MainContainer>
-          <PlayerBar isLoading={isLoading} />
+          </MainContainer>
+          {currentTrack && (
+            <PlayerBar isLoading={isLoading} currentTrack={currentTrack} />
+          )}
           <Footer />
         </Container>
       </Wrapper>
     </>
   );
-}
+};

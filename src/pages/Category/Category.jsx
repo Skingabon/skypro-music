@@ -10,20 +10,22 @@ import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 export const Category = ({ currentTrack, setCurrentTrack }) => {
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
-  const [tracks, setTracks] = useState([])
+  const [tracks, setTracks] = useState([]);
   const [isError, setIsError] = useState(null);
 
-
   useEffect(() => {
-    setIsLoading(true)
-    getTracks().then((data) => {
-      return data.json()
-    }).catch(error => {
-      setIsError(error);
-    }).then(data => {
-      setTracks(data)
-      setIsLoading(false)
-    })
+    setIsLoading(true);
+    getTracks()
+      .then((data) => {
+        return data.json();
+      })
+      .catch((error) => {
+        setIsError(error);
+      })
+      .then((data) => {
+        setTracks(data);
+        setIsLoading(false);
+      });
   }, []);
 
   //   //1. При использовании setTimeout внутри useEffect с пустым массивом зависимостей ([]), мы гарантируем, что setTimeout будет запущен только один раз после монтирования компонента. Это предотвращает многократное создание таймеров при обновлении компонента.
@@ -38,20 +40,22 @@ export const Category = ({ currentTrack, setCurrentTrack }) => {
         <Container>
           <MainContainer>
             <NavMenu />
-            <CenterBlock 
-            isError={isError} 
-            tracks={tracks}
-            setCurrentTrack={setCurrentTrack} 
-            isLoading={isLoading} 
-            heading={`Category ${params.id}`} />
-            
+            <CenterBlock
+              isError={isError}
+              tracks={tracks}
+              setCurrentTrack={setCurrentTrack}
+              isLoading={isLoading}
+              heading={`Category ${params.id}`}
+            />
+
             <SideBar />
           </MainContainer>
-          {/* <PlayerBar isLoading={isLoading} /> */}
-          {currentTrack && <PlayerBar isLoading={isLoading} currentTrack={currentTrack} />}
+          {currentTrack && (
+            <PlayerBar isLoading={isLoading} currentTrack={currentTrack} />
+          )}
           <Footer />
         </Container>
       </Wrapper>
     </>
   );
-}
+};
