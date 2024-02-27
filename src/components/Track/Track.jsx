@@ -5,7 +5,6 @@ export function timeFormat(time) {
   const realTime = time / 60;
   const sec = Math.round(time % 60);
 
-  // return `${Math.round(realTime)}: ${String(sec).length < 2 ? "0" + String(sec).slice(0,2) : "0"+ String(sec).slice(0,2)}`;
   return `${Math.round(realTime)}: ${String(sec).length < 2 ? "0" + sec : sec}`;
 }
 
@@ -20,16 +19,16 @@ export function Track({ track, setCurrentTrack }) {
             </S.TrackTitleSvg>
           </S.TrackTitleImg>
           <S.TrackTitleText>
-            <S.TrackTitleLink href="http://">
+            <S.TrackTitleLink>
               {track.name} <S.TrackTitleSpan></S.TrackTitleSpan>
             </S.TrackTitleLink>
           </S.TrackTitleText>
         </S.TrackTitle>
         <S.TrackAuthor>
-          <S.TrackAuthorLink href="http://">{track.author}</S.TrackAuthorLink>
+          <S.TrackAuthorLink >{track.author}</S.TrackAuthorLink>
         </S.TrackAuthor>
         <S.TrackAlbum>
-          <S.TrackAlbumLink href="http://">{track.album}</S.TrackAlbumLink>
+          <S.TrackAlbumLink >{track.album}</S.TrackAlbumLink>
         </S.TrackAlbum>
         <S.TrackTime>
           <S.TrackTimeSvg alt="time">

@@ -132,7 +132,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
                     </S.TruckPlayAuthor>
                     <S.TruckPlayAlbum>
                       <S.TruckPlayAlbumLink href="http://">
-                        {currentTrack.autor}
+                        {currentTrack.author}
                       </S.TruckPlayAlbumLink>
                     </S.TruckPlayAlbum>
                   </>
