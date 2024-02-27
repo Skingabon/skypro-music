@@ -64,9 +64,9 @@ export function PlayerBar({ isLoading, currentTrack }) {
 
         <S.StyledProgressTime>
         <>
-        ${timeFormat(audioRef.current.currentTime)}
+        {timeFormat(audioRef?.current?.currentTime)}
         <> </>/<> </>
-        {timeFormat(audioRef.current.duration)}
+        {timeFormat(audioRef?.current?.duration)}
         </>
         </S.StyledProgressTime>
         
