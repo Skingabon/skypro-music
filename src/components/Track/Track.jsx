@@ -3,7 +3,9 @@ import * as S from "./track.styled";
 
 function timeFormat(time) {
   const realTime = time / 60;
-  return `${Math.round(realTime)}:${time % 60}`;
+  const sec = time % 60;
+
+  return `${Math.round(realTime)}: ${String(sec).length < 2 ? "0" + sec : sec}`;
 }
 
 export function Track({ track, setCurrentTrack }) {

@@ -5,6 +5,9 @@ export function PlayerBar({ isLoading, currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  // const duration = 230;
+  // console.log(currentTime);
 
   const handleStart = () => {
     // console.log(audioRef);
@@ -34,6 +37,17 @@ export function PlayerBar({ isLoading, currentTrack }) {
     console.log(audioRef.current.volume);
   };
 
+  const inProgress = () => {
+    alert("В процессе реализации");
+  };
+
+  const changeProgressTrack = (event) => {
+    setCurrentTime(event.target.value);
+    audioRef.current.currentTime = event.target.value;
+  };
+
+  // console.log(audioRef?.current?.duration);
+
   return (
     <S.Bar>
       <S.Audio
@@ -42,14 +56,25 @@ export function PlayerBar({ isLoading, currentTrack }) {
         controls
         ref={audioRef}
         loop={isLoop}
+        onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
       />
       <S.BarContent>
-        <S.BarPlayerProgress />
+        {/* <S.BarPlayerProgress /> */}
+
+        <S.StyledProgressInput
+          type="range"
+          min={0}
+          max={audioRef?.current?.duration}
+          value={currentTime}
+          step={0.01}
+          onChange={changeProgressTrack}
+          // $color="#ff0000"
+        />
         <S.BarPlayerBlock>
           <S.BarPlayer>
             <S.PlayerControl>
               <S.BtnPrev>
-                <S.BtnPrevSvg alt="prev">
+                <S.BtnPrevSvg alt="prev" onClick={inProgress}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.BtnPrevSvg>
               </S.BtnPrev>
@@ -64,7 +89,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
                 </S.BtnPlaySvg>
               </S.BtnPlay>
               <S.BtnNext>
-                <S.BtnNextSVG alt="next">
+                <S.BtnNextSVG alt="next" onClick={inProgress}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.BtnNextSVG>
               </S.BtnNext>
@@ -74,7 +99,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
                 </S.BtnRepeatSVG>
               </S.BtnRepeat>
               <S.BtnShuffle>
-                <S.BtnShuffleSVG alt="shuffle">
+                <S.BtnShuffleSVG alt="shuffle" onClick={inProgress}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
                 </S.BtnShuffleSVG>
               </S.BtnShuffle>
