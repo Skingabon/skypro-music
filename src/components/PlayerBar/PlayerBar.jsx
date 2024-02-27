@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
+import { timeFormat } from "../Track/Track";
 
 export function PlayerBar({ isLoading, currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -47,7 +48,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
   };
 
   // console.log(audioRef?.current?.duration);
-
+  // console.log(audioRef?.current?.currentTime);
   return (
     <S.Bar>
       <S.Audio
@@ -61,6 +62,16 @@ export function PlayerBar({ isLoading, currentTrack }) {
       <S.BarContent>
         {/* <S.BarPlayerProgress /> */}
 
+        <S.StyledProgressTime>
+        <>
+        ${timeFormat(audioRef.current.currentTime)}
+        <> </>/<> </>
+        {timeFormat(audioRef.current.duration)}
+        </>
+        </S.StyledProgressTime>
+        
+
+
         <S.StyledProgressInput
           type="range"
           min={0}
@@ -68,7 +79,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
           value={currentTime}
           step={0.01}
           onChange={changeProgressTrack}
-          // $color="#ff0000"
+        // $color="#ff0000"
         />
         <S.BarPlayerBlock>
           <S.BarPlayer>
@@ -82,9 +93,8 @@ export function PlayerBar({ isLoading, currentTrack }) {
               <S.BtnPlay onClick={togglePlay}>
                 <S.BtnPlaySvg alt="play">
                   <use
-                    xlinkHref={`/img/icon/sprite.svg#${
-                      isPlaying ? "icon-pause" : "icon-play"
-                    }`}
+                    xlinkHref={`/img/icon/sprite.svg#${isPlaying ? "icon-pause" : "icon-play"
+                      }`}
                   ></use>
                 </S.BtnPlaySvg>
               </S.BtnPlay>

@@ -356,3 +356,14 @@ export const StyledProgressInput = styled.input`
     height: var(--progress-height);
   }
 `;
+
+export const StyledProgressTime = styled.span`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: right;
+  /* color: #696969; */
+  color: #ffffff;
+  margin-right: 10px;
+`;
