@@ -5,11 +5,13 @@ import { PlayerBar } from "../../components/PlayerBar/PlayerBar";
 import { getTracks } from "../../Api/tracks";
 import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
+import { useTrackContext } from "../../context/track";
 
-export const Favorites = ({ currentTrack, setCurrentTrack }) => {
+export const Favorites = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [tracks, setTracks] = useState([]);
   const [isError, setIsError] = useState(null);
+  const {currentTrack} = useTrackContext();
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,7 +38,7 @@ export const Favorites = ({ currentTrack, setCurrentTrack }) => {
             <CenterBlock
               isError={isError}
               tracks={tracks}
-              setCurrentTrack={setCurrentTrack}
+             
               isLoading={isLoading}
               heading={"Мои треки"}
             />

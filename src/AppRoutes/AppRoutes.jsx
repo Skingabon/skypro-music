@@ -10,7 +10,7 @@ import { Main } from "../pages/Main/Main";
 
 export const AppRoutes = () => {
   const [user, setUser] = useState(localStorage.getItem("token"));
-  const [currentTrack, setCurrentTrack] = useState(null);
+
 
   return (
     <Routes>
@@ -19,8 +19,8 @@ export const AppRoutes = () => {
           path="/"
           element={
             <Main
-              currentTrack={currentTrack}
-              setCurrentTrack={setCurrentTrack}
+           
+             
             />
           }
         />
@@ -28,8 +28,8 @@ export const AppRoutes = () => {
           path="/category/:id"
           element={
             <Category
-              currentTrack={currentTrack}
-              setCurrentTrack={setCurrentTrack}
+
+
             />
           }
         />
@@ -37,8 +37,7 @@ export const AppRoutes = () => {
           path="/favorites"
           element={
             <Favorites
-              currentTrack={currentTrack}
-              setCurrentTrack={setCurrentTrack}
+
             />
           }
         />

@@ -201,7 +201,7 @@ export const TruckPlayAuthor = styled.div`
   min-width: 49px;
 `;
 
-export const TruckPlayAuthorLink = styled.a`
+export const TruckPlayAuthorLink = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -217,7 +217,7 @@ export const TruckPlayAlbum = styled.div`
   min-width: 49px;
 `;
 
-export const TruckPlayAlbumLink = styled.div`
+export const TruckPlayAlbumLink = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -287,6 +287,7 @@ export const VolumeSVG = styled.svg`
   width: 13px;
   height: 18px;
   fill: transparent;
+  stroke: ${({ $isMute }) => ($isMute ? "red" : "transparent")};
 `;
 
 export const VolumeProgress = styled.div`

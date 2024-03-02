@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
-import { timeFormat } from "../Track/Track";
+import { timeFormat } from "../../utils/helpers";
+
 
 export function PlayerBar({ isLoading, currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isMute, setIsMute] = useState(false);
   // const duration = 230;
   // console.log(currentTime);
 
@@ -38,6 +40,10 @@ export function PlayerBar({ isLoading, currentTrack }) {
     console.log(audioRef.current.volume);
   };
 
+  const toggleMute = () => {
+    setIsMute(!isMute)
+  };
+
   const inProgress = () => {
     alert("В процессе реализации");
   };
@@ -47,8 +53,13 @@ export function PlayerBar({ isLoading, currentTrack }) {
     audioRef.current.currentTime = event.target.value;
   };
 
-  // console.log(audioRef?.current?.duration);
-  // console.log(audioRef?.current?.currentTime);
+useEffect (() => {
+  if(isMute) {
+    audioRef.current.volume = 0;
+  } else {audioRef.current.volume = 0.5}
+},[isMute]);
+
+
   return (
     <S.Bar>
       <S.Audio
@@ -63,13 +74,13 @@ export function PlayerBar({ isLoading, currentTrack }) {
         {/* <S.BarPlayerProgress /> */}
 
         <S.StyledProgressTime>
-        <>
-        {timeFormat(audioRef?.current?.currentTime)}
-        <> </>/<> </>
-        {timeFormat(audioRef?.current?.duration)}
-        </>
+          <>
+            {timeFormat(audioRef?.current?.currentTime)}
+            <> </>/<> </>
+            {timeFormat(audioRef?.current?.duration)}
+          </>
         </S.StyledProgressTime>
-        
+
 
 
         <S.StyledProgressInput
@@ -126,12 +137,12 @@ export function PlayerBar({ isLoading, currentTrack }) {
                       </S.TruckPlaySVG>
                     </S.TruckPlayImg>
                     <S.TruckPlayAuthor>
-                      <S.TruckPlayAuthorLink href="http://">
+                      <S.TruckPlayAuthorLink>
                         {currentTrack.name}
                       </S.TruckPlayAuthorLink>
                     </S.TruckPlayAuthor>
                     <S.TruckPlayAlbum>
-                      <S.TruckPlayAlbumLink href="http://">
+                      <S.TruckPlayAlbumLink>
                         {currentTrack.author}
                       </S.TruckPlayAlbumLink>
                     </S.TruckPlayAlbum>
@@ -155,7 +166,10 @@ export function PlayerBar({ isLoading, currentTrack }) {
           <S.BarVolumeBlock>
             <S.VolumeContent>
               <S.VolumeImg>
-                <S.VolumeSVG alt="volume">
+                <S.VolumeSVG
+                  alt="volume"
+                  $isMute={isMute}
+                  onClick={toggleMute}  >
                   <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
                 </S.VolumeSVG>
               </S.VolumeImg>

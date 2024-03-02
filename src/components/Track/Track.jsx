@@ -1,14 +1,14 @@
 import React from "react";
 import * as S from "./track.styled";
+import { useTrackContext } from "../../context/track";
+import { timeFormat } from "../../utils/helpers";
 
-export function timeFormat(time) {
-  const realTime = time / 60;
-  const sec = Math.round(time % 60);
 
-  return `${Math.round(realTime)}: ${String(sec).length < 2 ? "0" + sec : sec}`;
-}
+export function Track({ track }) {
+  const {setCurrentTrack} = useTrackContext()
 
-export function Track({ track, setCurrentTrack }) {
+
+
   return (
     <S.PlaylistTrack onClick={() => setCurrentTrack(track)}>
       <>

@@ -5,13 +5,15 @@ import { SideBar } from "../../components/SideBar/SideBar";
 import { PlayerBar } from "../../components/PlayerBar/PlayerBar";
 import { getTracks } from "../../Api/tracks";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
+import { useTrackContext } from "../../context/track";
 
 
 
-export const Main = ({ currentTrack, setCurrentTrack }) => {
+export const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
   const [tracks, setTracks] = useState([])
+const {currentTrack} = useTrackContext()
 
   useEffect(() => {
     setIsLoading(true)
@@ -26,6 +28,7 @@ export const Main = ({ currentTrack, setCurrentTrack }) => {
     })
   }, []);
 
+  
 
   return (
     <>
@@ -34,7 +37,7 @@ export const Main = ({ currentTrack, setCurrentTrack }) => {
         <Container>
           <MainContainer>
             <NavMenu />
-            <CenterBlock isError={isError} setCurrentTrack={setCurrentTrack} isLoading={isLoading} tracks={tracks} heading={"Треки"} />
+            <CenterBlock isError={isError} isLoading={isLoading} tracks={tracks} heading={"Треки"} />
             <SideBar />
           </MainContainer>
           {currentTrack && <PlayerBar isLoading={isLoading} currentTrack={currentTrack} />}
