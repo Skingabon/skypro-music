@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router";
-import { Registration } from "../pages/Registration/Registration";
-import { Login } from "../pages/Login/Login";
 import { NotFound } from "../pages/NotFound/NotFound";
 import { Favorites } from "../pages/Favorites/Favorites";
 import { Category } from "../pages/Category/Category";
 import { ProtectedRoute } from "./ProtectedRoutes";
 import { Main } from "../pages/Main/Main";
+import { AuthPage } from "../pages/Auth/AuthPage";
+import { useTrackContext } from "../context/track";
 
 export const AppRoutes = () => {
-  const [user, setUser] = useState(localStorage.getItem("token"));
+  
+  const {user} = useTrackContext()
+
+
 
 
   return (
@@ -44,8 +47,8 @@ export const AppRoutes = () => {
         <Route path="*" element={<NotFound />} />
       </Route>
 
-      <Route path="/login" element={<Login setUser={setUser} />} />
-      <Route path="/registration" element={<Registration />} />
+      <Route path="/login" element={<AuthPage isLoginMode={true}/>} />
+      <Route path="/registration" element={<AuthPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

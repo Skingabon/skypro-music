@@ -90,7 +90,6 @@ export const BtnPrev = styled(PlayerBtn)`
   margin-right: 23px;
 `;
 
-// тут я настледую из DIV, но у меня то svg
 export const BtnPrevSvg = styled.svg`
   width: 15px;
   height: 14px;
@@ -305,7 +304,7 @@ export const Audio = styled.audio`
 export const StyledProgressInput = styled.input`
   --progress-height: 8px;
   --progress-color: #b672ff;
-  /* --progress-color: ${(props) => props.$color ?? "#b672ff"}; */
+
 
   --progress-bg-color: #2e2e2e;
 
@@ -364,7 +363,6 @@ export const StyledProgressTime = styled.span`
   font-size: 16px;
   line-height: 24px;
   text-align: right;
-  /* color: #696969; */
   color: #ffffff;
   margin-right: 10px;
 `;

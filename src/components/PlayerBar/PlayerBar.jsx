@@ -9,17 +9,16 @@ export function PlayerBar({ isLoading, currentTrack }) {
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [isMute, setIsMute] = useState(false);
-  // const duration = 230;
-  // console.log(currentTime);
+
 
   const handleStart = () => {
-    // console.log(audioRef);
+
     audioRef.current.play();
     setIsPlaying(true);
   };
 
   const handleStop = () => {
-    // console.log(audioRef);
+
     audioRef.current.pause();
     setIsPlaying(false);
   };
@@ -29,7 +28,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
   }, [currentTrack]);
 
   const togglePlay = isPlaying ? handleStop : handleStart;
-  // console.log(currentTrack);
+
 
   const toggleLoop = () => {
     setIsLoop(!isLoop);
@@ -71,7 +70,7 @@ useEffect (() => {
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
       />
       <S.BarContent>
-        {/* <S.BarPlayerProgress /> */}
+
 
         <S.StyledProgressTime>
           <>
@@ -90,7 +89,7 @@ useEffect (() => {
           value={currentTime}
           step={0.01}
           onChange={changeProgressTrack}
-        // $color="#ff0000"
+
         />
         <S.BarPlayerBlock>
           <S.BarPlayer>
