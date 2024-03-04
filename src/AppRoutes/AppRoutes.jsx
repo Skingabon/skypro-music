@@ -47,7 +47,7 @@ export const AppRoutes = () => {
         <Route path="*" element={<NotFound />} />
       </Route>
 
-      <Route path="/login" element={<AuthPage isLoginMode={true}/>} />
+      <Route path="/login" element={<AuthPage isLoginMode={true} isAllowed={true}/>} />
       <Route path="/registration" element={<AuthPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
