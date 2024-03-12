@@ -1,36 +1,115 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
+import { timeFormat } from "../Track/Track";
 
-export function PlayerBar({ isLoading }) {
+export function PlayerBar({ isLoading, currentTrack }) {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isLoop, setIsLoop] = useState(false);
+  const audioRef = useRef(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  // const duration = 230;
+  // console.log(currentTime);
+
+  const handleStart = () => {
+    // console.log(audioRef);
+    audioRef.current.play();
+    setIsPlaying(true);
+  };
+
+  const handleStop = () => {
+    // console.log(audioRef);
+    audioRef.current.pause();
+    setIsPlaying(false);
+  };
+
+  useEffect(() => {
+    setIsPlaying(true);
+  }, [currentTrack]);
+
+  const togglePlay = isPlaying ? handleStop : handleStart;
+  // console.log(currentTrack);
+
+  const toggleLoop = () => {
+    setIsLoop(!isLoop);
+  };
+
+  const changeVolume = (e) => {
+    audioRef.current.volume = e.target.value / 100;
+    console.log(audioRef.current.volume);
+  };
+
+  const inProgress = () => {
+    alert("В процессе реализации");
+  };
+
+  const changeProgressTrack = (event) => {
+    setCurrentTime(event.target.value);
+    audioRef.current.currentTime = event.target.value;
+  };
+
+  // console.log(audioRef?.current?.duration);
+  // console.log(audioRef?.current?.currentTime);
   return (
     <S.Bar>
+      <S.Audio
+        src={currentTrack.track_file}
+        autoPlay
+        controls
+        ref={audioRef}
+        loop={isLoop}
+        onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
+      />
       <S.BarContent>
-        <S.BarPlayerProgress />
+        {/* <S.BarPlayerProgress /> */}
+
+        <S.StyledProgressTime>
+        <>
+        {timeFormat(audioRef?.current?.currentTime)}
+        <> </>/<> </>
+        {timeFormat(audioRef?.current?.duration)}
+        </>
+        </S.StyledProgressTime>
+        
+
+
+        <S.StyledProgressInput
+          type="range"
+          min={0}
+          max={audioRef?.current?.duration}
+          value={currentTime}
+          step={0.01}
+          onChange={changeProgressTrack}
+        // $color="#ff0000"
+        />
         <S.BarPlayerBlock>
           <S.BarPlayer>
             <S.PlayerControl>
               <S.BtnPrev>
-                <S.BtnPrevSvg alt="prev">
+                <S.BtnPrevSvg alt="prev" onClick={inProgress}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.BtnPrevSvg>
               </S.BtnPrev>
-              <S.BtnPlay>
+
+              <S.BtnPlay onClick={togglePlay}>
                 <S.BtnPlaySvg alt="play">
-                  <use xlinkHref="/img/icon/sprite.svg#icon-play"></use>
+                  <use
+                    xlinkHref={`/img/icon/sprite.svg#${isPlaying ? "icon-pause" : "icon-play"
+                      }`}
+                  ></use>
                 </S.BtnPlaySvg>
               </S.BtnPlay>
               <S.BtnNext>
-                <S.BtnNextSVG alt="next">
+                <S.BtnNextSVG alt="next" onClick={inProgress}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.BtnNextSVG>
               </S.BtnNext>
-              <S.BtnRepeat>
-                <S.BtnRepeatSVG alt="repeat">
+              <S.BtnRepeat onClick={toggleLoop}>
+                <S.BtnRepeatSVG alt="repeat" $isLoop={isLoop}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
                 </S.BtnRepeatSVG>
               </S.BtnRepeat>
               <S.BtnShuffle>
-                <S.BtnShuffleSVG alt="shuffle">
+                <S.BtnShuffleSVG alt="shuffle" onClick={inProgress}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
                 </S.BtnShuffleSVG>
               </S.BtnShuffle>
@@ -48,12 +127,12 @@ export function PlayerBar({ isLoading }) {
                     </S.TruckPlayImg>
                     <S.TruckPlayAuthor>
                       <S.TruckPlayAuthorLink href="http://">
-                        Ты та...
+                        {currentTrack.name}
                       </S.TruckPlayAuthorLink>
                     </S.TruckPlayAuthor>
                     <S.TruckPlayAlbum>
                       <S.TruckPlayAlbumLink href="http://">
-                        Баста
+                        {currentTrack.author}
                       </S.TruckPlayAlbumLink>
                     </S.TruckPlayAlbum>
                   </>
@@ -81,7 +160,11 @@ export function PlayerBar({ isLoading }) {
                 </S.VolumeSVG>
               </S.VolumeImg>
               <S.VolumeProgress>
-                <S.VolumeProgressLine type="range" name="range" />
+                <S.VolumeProgressLine
+                  type="range"
+                  name="range"
+                  onChange={changeVolume}
+                />
               </S.VolumeProgress>
             </S.VolumeContent>
           </S.BarVolumeBlock>

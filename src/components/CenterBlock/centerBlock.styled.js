@@ -25,6 +25,8 @@ export const CenterBlockContent = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  overflow-y: auto;
+  height: 700px;
 `;
 
 export const ContentTitle = styled.div`
@@ -42,6 +44,7 @@ export const ContentTitle = styled.div`
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 24px;
+  margin-right: 24px;
 `;
 
 export const PlayListTitleTrack = styled.div`
@@ -52,7 +55,7 @@ export const PlayListTitleTrack = styled.div`
   letter-spacing: 2px;
   color: #696969;
   text-transform: uppercase;
-  width: ${({$width}) => $width}px;
+  width: ${({ $width }) => $width}px;
 `;
 
 export const PlayListTitleSVG = styled.svg`
@@ -71,6 +74,14 @@ export const ContentPlayList = styled.div`
   -ms-flex-direction: column;
   flex-direction: column;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    background-color: #4b4949;
+    width: 8px;
+    padding-left: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+  }
 `;
 
 export const PlayListItem = styled.div`

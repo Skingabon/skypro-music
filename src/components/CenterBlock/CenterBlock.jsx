@@ -5,8 +5,13 @@ import { Track } from "../Track/Track";
 import * as S from "./centerBlock.styled";
 import { PlaylistTrack } from "../Track/track.styled";
 
-export function CenterBlock({ isLoading, tracks, heading }) {
-
+export function CenterBlock({
+  isError,
+  isLoading,
+  tracks,
+  heading,
+  setCurrentTrack,
+}) {
   const data = [
     {
       name: "Guilt",
@@ -86,11 +91,8 @@ export function CenterBlock({ isLoading, tracks, heading }) {
       <CenterBlockFilter />
       <S.CenterBlockContent>
         <S.ContentTitle>
-          <S.PlayListTitleTrack $width={447}
-          >Трек</S.PlayListTitleTrack>
-          <S.PlayListTitleTrack $width={321}>
-            ИСПОЛНИТЕЛЬ
-          </S.PlayListTitleTrack>
+          <S.PlayListTitleTrack $width={447}>Трек</S.PlayListTitleTrack>
+          <S.PlayListTitleTrack $width={321}>ИСПОЛНИТЕЛЬ</S.PlayListTitleTrack>
           <S.PlayListTitleTrack $width={245}>АЛЬБОМ</S.PlayListTitleTrack>
           <S.PlayListTitleTrack $width={60}>
             <S.PlayListTitleSVG alt="time">
@@ -99,23 +101,25 @@ export function CenterBlock({ isLoading, tracks, heading }) {
           </S.PlayListTitleTrack>
         </S.ContentTitle>
         <S.ContentPlayList>
-          <S.PlayListItem>
-            {isLoading ? (data.map((d, i) => <PlaylistTrack key={i}><img src="/img/PlayList.svg" alt="" /></PlaylistTrack>)) : (
-              tracks.map((elem, index) => (
-                <Track
-                  key={index}
-                  name={elem.name}
-                  coment={elem.id}
-                  autor={elem.author}
-                  album={elem.album}
-                  time={elem.duration_in_seconds
-                  }
-                />
-              ))
-            )}
-
-
-          </S.PlayListItem>
+          {isError ? (
+            "Не удалось загрузить плейлист, попробуйте позже."
+          ) : (
+            <S.PlayListItem>
+              {isLoading
+                ? data.map((d, i) => (
+                    <PlaylistTrack key={i}>
+                      {/* <img src="img/PlayList.svg" alt="" /> */}
+                    </PlaylistTrack>
+                  ))
+                : tracks.map((elem, index) => (
+                    <Track
+                      key={index}
+                      track={elem}
+                      setCurrentTrack={setCurrentTrack}
+                    />
+                  ))}
+            </S.PlayListItem>
+          )}
         </S.ContentPlayList>
       </S.CenterBlockContent>
     </S.MainCenterBlock>
