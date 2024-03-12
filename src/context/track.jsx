@@ -7,26 +7,27 @@ export const useTrackContext = () => {
 return useContext(TrackContext)
 };
 
-function getUserFromLS() {
-    try {
-return JSON.parse(localStorage.getItem("user"));
-    }
-    catch {
-return null
-    }
-}
+// function getUserFromLS() {
+//     try {
+// return JSON.parse(localStorage.getItem("user"));
+//     }
+//     catch {
+// return null
+//     }
+// }
 
 export const TrackProvider = ({ children }) => {
     const [currentTrack, setCurrentTrack] = useState(null);
-    const [user, setUser] = useState(getUserFromLS());
+    // const [user, setUser] = useState(getUserFromLS());
 
-function setLSandState(userData) {
-    localStorage.setItem('user', JSON.stringify(userData))
-setUser(userData)
-}
+// function setLSandState(userData) {
+//     localStorage.setItem('user', JSON.stringify(userData))
+// setUser(userData)
+// }
 
     return <TrackContext.Provider 
-    value={{ currentTrack, setCurrentTrack, user, setUser, setLSandState }}>{children}
+    value={{ currentTrack, setCurrentTrack}}>{children}
+    {/* value={{ currentTrack, setCurrentTrack, user, setUser, setLSandState }}>{children} */}
     </TrackContext.Provider>
 };
 

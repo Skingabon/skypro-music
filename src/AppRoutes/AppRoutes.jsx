@@ -6,11 +6,13 @@ import { Category } from "../pages/Category/Category";
 import { ProtectedRoute } from "./ProtectedRoutes";
 import { Main } from "../pages/Main/Main";
 import { AuthPage } from "../pages/Auth/AuthPage";
-import { useTrackContext } from "../context/track";
+// import { useTrackContext } from "../context/track";
+import { useUserContext } from "../context/user";
 
 export const AppRoutes = () => {
   
-  const {user} = useTrackContext()
+  // const {user} = useTrackContext()
+  const {user} = useUserContext()
 
 
 

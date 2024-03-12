@@ -2,7 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import * as S from "./authPage.styled.jsx";
 import React, { useEffect, useState } from "react";
 import { signIn, signup } from "../../Api/auth.js";
-import { useTrackContext } from "../../context/track.jsx";
+// import { useTrackContext } from "../../context/track.jsx";
+import { useUserContext } from "../../context/user.jsx";
 
 export function AuthPage({ isLoginMode = false }) {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ export function AuthPage({ isLoginMode = false }) {
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const { setLSandState } = useTrackContext();
+    const { setLSandState } = useUserContext();
 
 
     const handleLogin = async ({ email, password }) => {
@@ -82,7 +83,7 @@ export function AuthPage({ isLoginMode = false }) {
             <S.ModalForm>
                 <Link to="/login">
                     <S.ModalLogo>
-                        <S.ModalLogoImage src="/img/logo192.png" alt="logo" />
+                        <S.ModalLogoImage src="/img/skypro.png" alt="logo" />
                     </S.ModalLogo>
                 </Link>
                 {isLoginMode ? (
