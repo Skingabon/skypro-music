@@ -5,13 +5,13 @@ import { PlayerBar } from "../../components/PlayerBar/PlayerBar";
 import { getTracks } from "../../Api/tracks";
 import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
-import { useTrackContext } from "../../context/track";
+import { useSelector } from "react-redux";
 
 export const Favorites = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [tracks, setTracks] = useState([]);
   const [isError, setIsError] = useState(null);
-  const {currentTrack} = useTrackContext();
+  const { currentTrack } = useSelector((state) => state.tracks)
 
   useEffect(() => {
     setIsLoading(true);

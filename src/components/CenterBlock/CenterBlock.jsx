@@ -115,6 +115,7 @@ export function CenterBlock({
                   <Track
                     key={index}
                     track={elem}
+                    tracks={tracks}
                   />
                 ))}
             </S.PlayListItem>

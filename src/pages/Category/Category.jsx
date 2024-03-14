@@ -6,14 +6,14 @@ import { useParams } from "react-router-dom";
 import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { getTracks } from "../../Api/tracks";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
-import { useTrackContext } from "../../context/track";
+import { useSelector } from "react-redux";
 
 export const Category = () => {
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
   const [tracks, setTracks] = useState([]);
   const [isError, setIsError] = useState(null);
-  const {currentTrack} = useTrackContext();
+  const { currentTrack } = useSelector((state) => state.tracks)
 
   useEffect(() => {
     setIsLoading(true);

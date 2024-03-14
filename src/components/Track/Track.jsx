@@ -1,16 +1,17 @@
 import React from "react";
 import * as S from "./track.styled";
-import { useTrackContext } from "../../context/track";
 import { timeFormat } from "../../utils/helpers";
+import { useDispatch } from "react-redux";
+import { setCurrentTrack } from "../../redux/trackSlice";
 
 
-export function Track({ track }) {
-  const {setCurrentTrack} = useTrackContext()
-
-
-
+export function Track({ track, tracks }) {
+ 
+  const dispatch = useDispatch();
+  
   return (
-    <S.PlaylistTrack onClick={() => setCurrentTrack(track)}>
+
+    <S.PlaylistTrack onClick={() => dispatch(setCurrentTrack({track, tracks})) }>
       <>
         <S.TrackTitle>
           <S.TrackTitleImg>
