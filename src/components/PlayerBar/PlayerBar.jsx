@@ -1,23 +1,24 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
-import { timeFormat } from "../Track/Track";
+import { timeFormat } from "../../utils/helpers";
+
 
 export function PlayerBar({ isLoading, currentTrack }) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
-  // const duration = 230;
-  // console.log(currentTime);
+  const [isMute, setIsMute] = useState(false);
+
 
   const handleStart = () => {
-    // console.log(audioRef);
+
     audioRef.current.play();
     setIsPlaying(true);
   };
 
   const handleStop = () => {
-    // console.log(audioRef);
+
     audioRef.current.pause();
     setIsPlaying(false);
   };
@@ -27,7 +28,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
   }, [currentTrack]);
 
   const togglePlay = isPlaying ? handleStop : handleStart;
-  // console.log(currentTrack);
+
 
   const toggleLoop = () => {
     setIsLoop(!isLoop);
@@ -36,6 +37,10 @@ export function PlayerBar({ isLoading, currentTrack }) {
   const changeVolume = (e) => {
     audioRef.current.volume = e.target.value / 100;
     console.log(audioRef.current.volume);
+  };
+
+  const toggleMute = () => {
+    setIsMute(!isMute)
   };
 
   const inProgress = () => {
@@ -47,8 +52,13 @@ export function PlayerBar({ isLoading, currentTrack }) {
     audioRef.current.currentTime = event.target.value;
   };
 
-  // console.log(audioRef?.current?.duration);
-  // console.log(audioRef?.current?.currentTime);
+useEffect (() => {
+  if(isMute) {
+    audioRef.current.volume = 0;
+  } else {audioRef.current.volume = 0.5}
+},[isMute]);
+
+
   return (
     <S.Bar>
       <S.Audio
@@ -60,16 +70,16 @@ export function PlayerBar({ isLoading, currentTrack }) {
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
       />
       <S.BarContent>
-        {/* <S.BarPlayerProgress /> */}
+
 
         <S.StyledProgressTime>
-        <>
-        {timeFormat(audioRef?.current?.currentTime)}
-        <> </>/<> </>
-        {timeFormat(audioRef?.current?.duration)}
-        </>
+          <>
+            {timeFormat(audioRef?.current?.currentTime)}
+            <> </>/<> </>
+            {timeFormat(audioRef?.current?.duration)}
+          </>
         </S.StyledProgressTime>
-        
+
 
 
         <S.StyledProgressInput
@@ -79,7 +89,7 @@ export function PlayerBar({ isLoading, currentTrack }) {
           value={currentTime}
           step={0.01}
           onChange={changeProgressTrack}
-        // $color="#ff0000"
+
         />
         <S.BarPlayerBlock>
           <S.BarPlayer>
@@ -126,12 +136,12 @@ export function PlayerBar({ isLoading, currentTrack }) {
                       </S.TruckPlaySVG>
                     </S.TruckPlayImg>
                     <S.TruckPlayAuthor>
-                      <S.TruckPlayAuthorLink href="http://">
+                      <S.TruckPlayAuthorLink>
                         {currentTrack.name}
                       </S.TruckPlayAuthorLink>
                     </S.TruckPlayAuthor>
                     <S.TruckPlayAlbum>
-                      <S.TruckPlayAlbumLink href="http://">
+                      <S.TruckPlayAlbumLink>
                         {currentTrack.author}
                       </S.TruckPlayAlbumLink>
                     </S.TruckPlayAlbum>
@@ -155,7 +165,10 @@ export function PlayerBar({ isLoading, currentTrack }) {
           <S.BarVolumeBlock>
             <S.VolumeContent>
               <S.VolumeImg>
-                <S.VolumeSVG alt="volume">
+                <S.VolumeSVG
+                  alt="volume"
+                  $isMute={isMute}
+                  onClick={toggleMute}  >
                   <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
                 </S.VolumeSVG>
               </S.VolumeImg>

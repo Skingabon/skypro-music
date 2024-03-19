@@ -90,7 +90,6 @@ export const BtnPrev = styled(PlayerBtn)`
   margin-right: 23px;
 `;
 
-// тут я настледую из DIV, но у меня то svg
 export const BtnPrevSvg = styled.svg`
   width: 15px;
   height: 14px;
@@ -201,7 +200,7 @@ export const TruckPlayAuthor = styled.div`
   min-width: 49px;
 `;
 
-export const TruckPlayAuthorLink = styled.a`
+export const TruckPlayAuthorLink = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -217,7 +216,7 @@ export const TruckPlayAlbum = styled.div`
   min-width: 49px;
 `;
 
-export const TruckPlayAlbumLink = styled.div`
+export const TruckPlayAlbumLink = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -287,6 +286,7 @@ export const VolumeSVG = styled.svg`
   width: 13px;
   height: 18px;
   fill: transparent;
+  stroke: ${({ $isMute }) => ($isMute ? "red" : "transparent")};
 `;
 
 export const VolumeProgress = styled.div`
@@ -304,7 +304,7 @@ export const Audio = styled.audio`
 export const StyledProgressInput = styled.input`
   --progress-height: 8px;
   --progress-color: #b672ff;
-  /* --progress-color: ${(props) => props.$color ?? "#b672ff"}; */
+
 
   --progress-bg-color: #2e2e2e;
 
@@ -363,7 +363,6 @@ export const StyledProgressTime = styled.span`
   font-size: 16px;
   line-height: 24px;
   text-align: right;
-  /* color: #696969; */
   color: #ffffff;
   margin-right: 10px;
 `;

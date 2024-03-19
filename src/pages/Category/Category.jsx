@@ -6,12 +6,14 @@ import { useParams } from "react-router-dom";
 import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { getTracks } from "../../Api/tracks";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
+import { useTrackContext } from "../../context/track";
 
-export const Category = ({ currentTrack, setCurrentTrack }) => {
+export const Category = () => {
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
   const [tracks, setTracks] = useState([]);
   const [isError, setIsError] = useState(null);
+  const {currentTrack} = useTrackContext();
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,12 +30,7 @@ export const Category = ({ currentTrack, setCurrentTrack }) => {
       });
   }, []);
 
-  //   //1. При использовании setTimeout внутри useEffect с пустым массивом зависимостей ([]), мы гарантируем, что setTimeout будет запущен только один раз после монтирования компонента. Это предотвращает многократное создание таймеров при обновлении компонента.
-
-  // 2. Помещение setTimeout в useEffect также помогает в управлении жизненным циклом таймера. Когда компонент размонтируется, useEffect выполнит очистку (clean-up) и отменит таймер, чтобы избежать утечек памяти.
-
-  // 3. Использование setTimeout внутри useEffect делает код более читаемым и предсказуемым, так как это стандартная практика для выполнения побочных эффектов в React.
-
+  
   return (
     <>
       <Wrapper>
@@ -43,7 +40,7 @@ export const Category = ({ currentTrack, setCurrentTrack }) => {
             <CenterBlock
               isError={isError}
               tracks={tracks}
-              setCurrentTrack={setCurrentTrack}
+
               isLoading={isLoading}
               heading={`Category ${params.id}`}
             />

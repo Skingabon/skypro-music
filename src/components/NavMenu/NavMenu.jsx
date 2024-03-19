@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import * as S from "./navMenu.styled";
-
+import { useUserContext } from "../../context/user.jsx";
 
 
 export function NavMenu() {
   const [visibleMenu, setVisibleMenu] = useState(false);
+const {resetUser} = useUserContext();
 
   return (
     <S.MainNav>
@@ -33,8 +34,8 @@ export function NavMenu() {
             </S.MenuItem>
 
 
-            <S.MenuItem>
-              <S.MenuLink to="/Login">
+            <S.MenuItem onClick={resetUser}>
+              <S.MenuLink to="/login">
                 Выйти</S.MenuLink>
             </S.MenuItem>
           </S.MenuList>

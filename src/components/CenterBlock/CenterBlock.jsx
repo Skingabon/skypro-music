@@ -9,8 +9,8 @@ export function CenterBlock({
   isError,
   isLoading,
   tracks,
-  heading,
-  setCurrentTrack,
+  heading
+
 }) {
   const data = [
     {
@@ -107,17 +107,16 @@ export function CenterBlock({
             <S.PlayListItem>
               {isLoading
                 ? data.map((d, i) => (
-                    <PlaylistTrack key={i}>
-                      {/* <img src="img/PlayList.svg" alt="" /> */}
-                    </PlaylistTrack>
-                  ))
+                  <PlaylistTrack key={i}>
+                    <img src="img/PlayList.svg" alt="" /> 
+                  </PlaylistTrack>
+                ))
                 : tracks.map((elem, index) => (
-                    <Track
-                      key={index}
-                      track={elem}
-                      setCurrentTrack={setCurrentTrack}
-                    />
-                  ))}
+                  <Track
+                    key={index}
+                    track={elem}
+                  />
+                ))}
             </S.PlayListItem>
           )}
         </S.ContentPlayList>
