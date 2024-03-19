@@ -41,7 +41,7 @@ export const Main = () => {
             <CenterBlock isError={isError} isLoading={isLoading} tracks={tracks} heading={"Треки"} />
             <SideBar />
           </MainContainer>
-          {currentTrack && <PlayerBar isLoading={isLoading} currentTrack={currentTrack} />}
+          {currentTrack && <PlayerBar isLoading={isLoading} currentTrack={currentTrack} tracks={tracks} />}
           <Footer />
         </Container>
       </Wrapper>

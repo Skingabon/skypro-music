@@ -8,10 +8,12 @@ import { setCurrentTrack } from "../../redux/trackSlice";
 export function Track({ track, tracks }) {
  
   const dispatch = useDispatch();
+
+
   
   return (
 
-    <S.PlaylistTrack onClick={() => dispatch(setCurrentTrack({track, tracks})) }>
+    <S.PlaylistTrack onClick={() => {dispatch(setCurrentTrack({track, tracks}));}}>
       <>
         <S.TrackTitle>
           <S.TrackTitleImg>
