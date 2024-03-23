@@ -2,7 +2,7 @@ import React from "react";
 import { SideBarPlayList } from "../SideBarPlayList/SideBarPlayList";
 import * as S from "./sideBar.styled";
 import { useUserContext } from "../../context/user";
-import { Link } from "react-router-dom";
+
 
 export function SideBar() {
 const {user, resetUser} = useUserContext();
@@ -13,11 +13,11 @@ const {user, resetUser} = useUserContext();
       <S.SidebarPersonal>
         <S.SidebarPersonalName>{user.username}</S.SidebarPersonalName>
         <S.SidebarIcon onClick={resetUser}>
-          <Link to="/login">
+          <a href="/login">
           <svg alt="logout">
             <use xlinkHref="/img/icon/sprite.svg#logout"></use>
           </svg>
-          </Link>
+          </a>
         </S.SidebarIcon>
       </S.SidebarPersonal>
       <SideBarPlayList />

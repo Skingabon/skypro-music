@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+
+const scale = keyframes`
+0% {
+ transform: scale(0.5);
+}
+50% {
+  transform:scale(1)
+}
+100% {
+  transform:scale(0.5);
+}
+`;
+
+
 
 export const PlaylistTrack = styled.div`
   display: -webkit-box;
@@ -54,6 +69,16 @@ export const TrackTitleSvg = styled.svg`
   fill: transparent;
   stroke: #4e4e4e;
 `;
+
+export const Dote = styled.div`
+height: 16px;
+width: 16px;
+border-radius: 50%;
+background-color: rgb(182, 114, 255);
+animation: ${scale} 1s linear both;
+animation-iteration-count: ${(props) => props.$isPlaying ? "infinite" : 0};
+
+	       `;
 
 export const TrackTitleLink = styled.span`
   font-style: normal;

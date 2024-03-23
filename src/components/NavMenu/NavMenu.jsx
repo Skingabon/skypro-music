@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import * as S from "./navMenu.styled";
 import { useUserContext } from "../../context/user.jsx";
+// import { useDispatch } from "react-redux";
+// import { clearCurrentTrack } from "../../redux/trackSlice.js";
 
 
 export function NavMenu() {
   const [visibleMenu, setVisibleMenu] = useState(false);
-const {resetUser} = useUserContext();
+  const { resetUser } = useUserContext();
+
+  // const dispatch = useDispatch();
+
+  function logout() {
+    // dispatch(clearCurrentTrack())
+    window.location.pathname =  "/login"
+    resetUser()
+
+  }
 
   return (
     <S.MainNav>
@@ -34,7 +45,7 @@ const {resetUser} = useUserContext();
             </S.MenuItem>
 
 
-            <S.MenuItem onClick={resetUser}>
+            <S.MenuItem onClick={logout}>
               <S.MenuLink to="/login">
                 Выйти</S.MenuLink>
             </S.MenuItem>

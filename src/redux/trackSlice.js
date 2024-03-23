@@ -7,12 +7,25 @@ export const trackSlice = createSlice({
         currentPlayList: [],
         isShuffle: false,
         initialPlaylist: [],
+        isPlaying: false,
+
+
     },
     reducers: {
         //метод 
         //state - состояние
         //action - то что принимаем
+
+clearCurentTrack: (state) => {
+  state.currentTrack = null;  
+},
+
+        setIsPlaying: (state, action) => {
+            state.isPlaying = action.payload
+        },
+
         setCurrentTrack: (state, action) => {
+            state.isPlaying = true;
             state.currentTrack = action.payload.track
             state.currentPlayList = action.payload.tracks
             state.initialPlaylist = action.payload.tracks
@@ -43,7 +56,7 @@ export const trackSlice = createSlice({
         }
     }
 })
-export const { setCurrentTrack, setNextTrack, setPrevTrack, setToggleShufTrack } = trackSlice.actions
+export const { clearCurrentTrack, setCurrentTrack, setNextTrack, setPrevTrack, setToggleShufTrack, setIsPlaying } = trackSlice.actions
 
 export const trackReducer = trackSlice.reducer
 

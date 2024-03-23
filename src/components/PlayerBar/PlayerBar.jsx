@@ -2,17 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
 import { timeFormat } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
-import { setNextTrack, setPrevTrack, setToggleShufTrack } from "../../redux/trackSlice";
+import { setIsPlaying, setNextTrack, setPrevTrack, setToggleShufTrack } from "../../redux/trackSlice";
 
 
 export function PlayerBar({ isLoading, currentTrack }) {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [isMute, setIsMute] = useState(false);
-  const {isShuffle} = useSelector(state => state.tracks);
+  const {isShuffle, isPlaying} = useSelector(state => state.tracks);
   const dispatch = useDispatch();
+  
+
 
   const nextTrack = () => {
     dispatch(setNextTrack());
@@ -30,18 +31,24 @@ export function PlayerBar({ isLoading, currentTrack }) {
   const handleStart = () => {
 
     audioRef.current.play();
-    setIsPlaying(true);
+    dispatch(setIsPlaying(true));
   };
 
   const handleStop = () => {
 
     audioRef.current.pause();
-    setIsPlaying(false);
+    dispatch(setIsPlaying(false));
   };
 
   useEffect(() => {
-    setIsPlaying(true);
+    dispatch(setIsPlaying(true));
   }, [currentTrack.id]);
+
+  useEffect(() => {
+    if( audioRef.current.currentTime === audioRef.current.duration) {
+      dispatch(setNextTrack());
+    }
+  }, [currentTime]);
 
   const togglePlay = isPlaying ? handleStop : handleStart;
 
