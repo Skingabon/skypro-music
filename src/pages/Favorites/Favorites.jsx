@@ -1,32 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavMenu } from "../../components/NavMenu/NavMenu";
 import { SideBar } from "../../components/SideBar/SideBar";
 import { PlayerBar } from "../../components/PlayerBar/PlayerBar";
-import { getTracks } from "../../Api/tracks";
 import { CenterBlock } from "../../components/CenterBlock/CenterBlock";
 import { Container, Footer, MainContainer, Wrapper } from "../../app.styled";
 import { useSelector } from "react-redux";
+import { useGetFavoriteTracksQuery } from "../../Api/tracksApi";
 
 export const Favorites = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [tracks, setTracks] = useState([]);
-  const [isError, setIsError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [tracks, setTracks] = useState([]);
+  // const [isError, setIsError] = useState(null);
   const { currentTrack } = useSelector((state) => state.tracks)
+  const { data: tracks, error, isLoading, } = useGetFavoriteTracksQuery()
 
-  useEffect(() => {
-    setIsLoading(true);
-    getTracks()
-      .then((data) => {
-        return data.json();
-      })
-      .catch((error) => {
-        setIsError(error);
-      })
-      .then((data) => {
-        setTracks(data);
-        setIsLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   getTracks()
+  //     .then((data) => {
+  //       return data.json();
+  //     })
+  //     .catch((error) => {
+  //       setIsError(error);
+  //     })
+  //     .then((data) => {
+  //       setTracks(data);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -36,7 +37,7 @@ export const Favorites = () => {
           <MainContainer>
             <NavMenu />
             <CenterBlock
-              isError={isError}
+              isError={error}
               tracks={tracks}
              
               isLoading={isLoading}
