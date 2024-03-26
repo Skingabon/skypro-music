@@ -5,6 +5,7 @@ import { Track } from "../Track/Track";
 import * as S from "./centerBlock.styled";
 import { PlaylistTrack } from "../Track/track.styled";
 
+
 export function CenterBlock({
   isError,
   isLoading,
@@ -108,14 +109,16 @@ export function CenterBlock({
               {isLoading
                 ? data.map((d, i) => (
                   <PlaylistTrack key={i}>
-                    <img src="img/PlayList.svg" alt="" /> 
+                    <img src="img/PlayList.svg" alt="" />
                   </PlaylistTrack>
                 ))
                 : tracks.map((elem, index) => (
                   <Track
                     key={index}
                     track={elem}
+                    tracks={tracks}
                   />
+
                 ))}
             </S.PlayListItem>
           )}

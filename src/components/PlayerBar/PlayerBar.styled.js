@@ -141,7 +141,7 @@ export const BtnShuffleSVG = styled.svg`
   width: 19px;
   height: 12px;
   fill: transparent;
-  stroke: #696969;
+  stroke: ${({ $isShuffle }) => ($isShuffle ? "#ffffff" : "#696969")};
 `;
 
 export const PlayerTruckPlay = styled.div`

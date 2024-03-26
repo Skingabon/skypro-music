@@ -17,7 +17,7 @@ return null
 }
 
 export const UserProvider = ({ children }) => {
-    // const [currentTrack, setCurrentTrack] = useState(null);
+
     const [user, setUser] = useState(getUserFromLS());
 
 function setLSandState(userData) {

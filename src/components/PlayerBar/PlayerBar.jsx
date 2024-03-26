@@ -1,31 +1,54 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as S from "./PlayerBar.styled";
 import { timeFormat } from "../../utils/helpers";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsPlaying, setNextTrack, setPrevTrack, setToggleShufTrack } from "../../redux/trackSlice";
 
 
 export function PlayerBar({ isLoading, currentTrack }) {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [isLoop, setIsLoop] = useState(false);
   const audioRef = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [isMute, setIsMute] = useState(false);
+  const {isShuffle, isPlaying} = useSelector(state => state.tracks);
+  const dispatch = useDispatch();
+  
 
+
+  const nextTrack = () => {
+    dispatch(setNextTrack());
+  };
+
+  const prevTrack = () => {
+    dispatch(setPrevTrack());
+  };
+
+  const toggleShuffle = () => {
+    dispatch(setToggleShufTrack());
+    
+  }
 
   const handleStart = () => {
 
     audioRef.current.play();
-    setIsPlaying(true);
+    dispatch(setIsPlaying(true));
   };
 
   const handleStop = () => {
 
     audioRef.current.pause();
-    setIsPlaying(false);
+    dispatch(setIsPlaying(false));
   };
 
   useEffect(() => {
-    setIsPlaying(true);
-  }, [currentTrack]);
+    dispatch(setIsPlaying(true));
+  }, [currentTrack.id]);
+
+  useEffect(() => {
+    if( audioRef.current.currentTime === audioRef.current.duration) {
+      dispatch(setNextTrack());
+    }
+  }, [currentTime]);
 
   const togglePlay = isPlaying ? handleStop : handleStart;
 
@@ -43,20 +66,17 @@ export function PlayerBar({ isLoading, currentTrack }) {
     setIsMute(!isMute)
   };
 
-  const inProgress = () => {
-    alert("В процессе реализации");
-  };
 
   const changeProgressTrack = (event) => {
     setCurrentTime(event.target.value);
     audioRef.current.currentTime = event.target.value;
   };
 
-useEffect (() => {
-  if(isMute) {
-    audioRef.current.volume = 0;
-  } else {audioRef.current.volume = 0.5}
-},[isMute]);
+  useEffect(() => {
+    if (isMute) {
+      audioRef.current.volume = 0;
+    } else { audioRef.current.volume = 0.5 }
+  }, [isMute]);
 
 
   return (
@@ -95,7 +115,7 @@ useEffect (() => {
           <S.BarPlayer>
             <S.PlayerControl>
               <S.BtnPrev>
-                <S.BtnPrevSvg alt="prev" onClick={inProgress}>
+                <S.BtnPrevSvg alt="prev" onClick={prevTrack}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.BtnPrevSvg>
               </S.BtnPrev>
@@ -109,7 +129,7 @@ useEffect (() => {
                 </S.BtnPlaySvg>
               </S.BtnPlay>
               <S.BtnNext>
-                <S.BtnNextSVG alt="next" onClick={inProgress}>
+                <S.BtnNextSVG alt="next" onClick={nextTrack}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.BtnNextSVG>
               </S.BtnNext>
@@ -119,7 +139,7 @@ useEffect (() => {
                 </S.BtnRepeatSVG>
               </S.BtnRepeat>
               <S.BtnShuffle>
-                <S.BtnShuffleSVG alt="shuffle" onClick={inProgress}>
+                <S.BtnShuffleSVG alt="shuffle" $isShuffle={isShuffle} onClick={toggleShuffle}>
                   <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
                 </S.BtnShuffleSVG>
               </S.BtnShuffle>
