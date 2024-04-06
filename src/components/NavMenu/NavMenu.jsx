@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import * as S from "./navMenu.styled";
 import { useUserContext } from "../../context/user.jsx";
-// import { useDispatch } from "react-redux";
-// import { clearCurrentTrack } from "../../redux/trackSlice.js";
+import { useLocation } from "react-router-dom";
+
 
 
 export function NavMenu() {
   const [visibleMenu, setVisibleMenu] = useState(false);
   const { resetUser } = useUserContext();
+  const { pathname } = useLocation();
 
-  // const dispatch = useDispatch();
-
+  console.log(pathname);
   function logout() {
-    // dispatch(clearCurrentTrack())
-    window.location.pathname =  "/login"
+
+    window.location.pathname = "/login"
     resetUser()
 
   }
@@ -32,14 +32,14 @@ export function NavMenu() {
         <S.NavMenu>
           <S.MenuList>
             <S.MenuItem>
-              <S.MenuLink $active={window.location.pathname === "/"} to="/">
+              <S.MenuLink $active={pathname === "/"} to="/">
                 Главная
 
               </S.MenuLink>
             </S.MenuItem>
 
             <S.MenuItem>
-              <S.MenuLink $active={window.location.pathname === "/favorites"} to="/Favorites">
+              <S.MenuLink $active={pathname === "/favorites"} to="/favorites">
                 Мои треки
               </S.MenuLink>
             </S.MenuItem>
