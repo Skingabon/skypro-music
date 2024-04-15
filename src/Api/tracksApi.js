@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { forceLogout } from "../utils/helpers"
 
 const baseQueryRefresh = async (args, api, extraOptions) => {
   const baseQuery = fetchBaseQuery({
@@ -14,7 +15,8 @@ const baseQueryRefresh = async (args, api, extraOptions) => {
   const refresh = JSON.parse(localStorage.getItem("user")).res.refresh
   //console.log(refresh);
   if (!refresh) {
-    // сделать выход из приложения
+    // делаю выход из приложения
+    forceLogout()
   }
   const result = await baseQuery(args, api, extraOptions)
   if (result?.error?.status === 401) {
@@ -26,7 +28,8 @@ const baseQueryRefresh = async (args, api, extraOptions) => {
       }
     }, api, extraOptions)
     if (!refreshToken.data.access) {
-      // сделать выход из приложения
+      // делаю выход из приложения
+      forceLogout()
       return
     }
     const user = JSON.parse(localStorage.getItem("user"))
@@ -63,7 +66,8 @@ export const tracksApi = createApi({
       query: () => ({
         url: "/catalog/track/favorite/all/",
         method: "GET",
-      })
+      }),
+      providesTags: ["LIKE"]
     }),
     addFavoriteTrack: builder.mutation({
       query: ({ id }) => ({
@@ -79,11 +83,18 @@ export const tracksApi = createApi({
       }),
       invalidatesTags: ["LIKE"]
     }),
+    getCategoryById: builder.query({
+    query: ({ id }) => ({
+      url: `/catalog/selection/${id}/`,
+      // GET по умолчанию
+    }),
+    providesTags: ["LIKE"] 
+    })
   })
 })
 
 
-export const { useGetTracksQuery, useGetFavoriteTracksQuery, useAddFavoriteTrackMutation, useDelFavoriteTrackMutation } = tracksApi
+export const { useGetCategoryByIdQuery, useGetTracksQuery, useGetFavoriteTracksQuery, useAddFavoriteTrackMutation, useDelFavoriteTrackMutation } = tracksApi
 
 
 
