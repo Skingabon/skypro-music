@@ -137,6 +137,7 @@ export const TrackTimeSvg = styled.svg`
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
+  
 `;
 
 export const TrackTimeText = styled.span`

@@ -8,11 +8,12 @@ import { Main } from "../pages/Main/Main";
 import { AuthPage } from "../pages/Auth/AuthPage";
 // import { useTrackContext } from "../context/track";
 import { useUserContext } from "../context/user";
+import { Layout } from "../Layout/Layout";
 
 export const AppRoutes = () => {
-  
+
   // const {user} = useTrackContext()
-  const {user} = useUserContext()
+  const { user } = useUserContext()
 
 
 
@@ -20,32 +21,28 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route element={<ProtectedRoute isAllowed={user} />}>
-        <Route
-          path="/"
-          element={
-            <Main
-           
-             
-            />
-          }
-        />
-        <Route
-          path="/category/:id"
-          element={
-            <Category
+        <Route path="/" element={<Layout />}>
 
+          <Route
+            element={
+              <Main />
+            }
+            index
+          />
+          <Route
+            path="/category/:id"
+            element={
+              <Category />
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Favorites />
+            }
+          />
+        </Route>
 
-            />
-          }
-        />
-        <Route
-          path="/favorites"
-          element={
-            <Favorites
-
-            />
-          }
-        />
         <Route path="*" element={<NotFound />} />
       </Route>
 

@@ -25,7 +25,6 @@ export function signIn({ email, password }) {
         body: JSON.stringify({
             email: email,
             password: password,
-
         }),
         headers: {
             // API требует обязательного указания заголовка content-type, 
@@ -48,8 +47,6 @@ export function signIn({ email, password }) {
             }
             // console.log(resp);
             return resp.json();
-
-
         })
         .then((resp) => {
             return { response: resp, error: "" };
@@ -57,7 +54,22 @@ export function signIn({ email, password }) {
         .catch((error) => {
             return { response: "", error: error.message }
         });
-
 }
 
+export function accessToken({ email, password }) {
+    return fetch(url + "/user/token/", {
+        method: "POST",
+        body: JSON.stringify({
+            email: email,
+            password: password,
 
+        }),
+        headers: {
+            // API требует обязательного указания заголовка content-type, 
+            // так апи понимает что мы посылаем ему json строчку в теле запроса
+            "content-type": "application/json",
+        },
+    }).then((resp) => {
+        return resp.json();
+    })
+}
