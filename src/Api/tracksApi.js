@@ -3,7 +3,7 @@ import { forceLogout } from "../utils/helpers"
 
 const baseQueryRefresh = async (args, api, extraOptions) => {
   const baseQuery = fetchBaseQuery({
-    baseUrl: "https://skypro-music-api.skyeng.tech",
+    baseUrl: "https://webdev-music-003b5b991590.herokuapp.com",
     prepareHeaders: (headers) => {
       const token = JSON.parse(localStorage.getItem("user")).res.access
       if (token) {
