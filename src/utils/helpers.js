@@ -5,3 +5,8 @@ export function timeFormat(time) {
   
     return `${Math.round(realTime)}: ${String(sec).length < 2 ? "0" + sec : sec}`;
   }
+
+export function forceLogout() {
+  localStorage.removeItem('user')
+  window.location.pathname = "/login"
+}
