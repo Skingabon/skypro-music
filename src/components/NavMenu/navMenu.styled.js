@@ -37,8 +37,8 @@ export const NavMenu = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  width: 113.33px;
-  height: 17px;
+  width: 70px;
+  height: 70px;
   color: #181818;
 `;
 
@@ -47,6 +47,7 @@ export const BurgerLine = styled.span`
   width: 100%;
   height: 1px;
   background-color: #d3d3d3;
+  
 `;
 
 export const MenuList = styled.ul`
