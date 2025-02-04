@@ -30,7 +30,7 @@ export const ModalLogo = styled.div`
 
 export const ModalLogoImage = styled.img`
   width: 140px;
-  height: 21px;
+  height: 140px;
 `;
 
 export const ModalInput = styled.input`
