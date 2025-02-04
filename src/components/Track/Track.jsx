@@ -23,7 +23,7 @@ export function Track({ track, tracks }) {
         <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
       </S.TrackTitleSvg>
     }
-    return currentTrack.id === track.id
+    return currentTrack._id === track._id
       ? <S.Dote $isPlaying={isPlaying} /> :
       <S.TrackTitleSvg alt="music">
         <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
@@ -39,10 +39,10 @@ export function Track({ track, tracks }) {
     event.stopPropagation()
     console.log(event);
     if (isLike) {
-      delLike({ id: track.id })
+      delLike({ id: track._id })
       return
     }
-    addLike({ id: track.id })
+    addLike({ id: track._id })
   }
 
   return (

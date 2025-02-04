@@ -3,7 +3,7 @@ import { forceLogout } from "../utils/helpers"
 
 const baseQueryRefresh = async (args, api, extraOptions) => {
   const baseQuery = fetchBaseQuery({
-    baseUrl: "https://skypro-music-api.skyeng.tech",
+    baseUrl: "https://webdev-music-003b5b991590.herokuapp.com",
     prepareHeaders: (headers) => {
       const token = JSON.parse(localStorage.getItem("user")).res.access
       if (token) {
@@ -83,7 +83,7 @@ export const tracksApi = createApi({
       }),
       invalidatesTags: ["LIKE"]
     }),
-    getCategoryById: builder.query({
+    getCategoryById: builder.mutation({
     query: ({ id }) => ({
       url: `/catalog/selection/${id}/`,
       // GET по умолчанию
@@ -94,7 +94,7 @@ export const tracksApi = createApi({
 })
 
 
-export const { useGetCategoryByIdQuery, useGetTracksQuery, useGetFavoriteTracksQuery, useAddFavoriteTrackMutation, useDelFavoriteTrackMutation } = tracksApi
+export const { useGetCategoryByIdMutation, useGetTracksQuery, useGetFavoriteTracksQuery, useAddFavoriteTrackMutation, useDelFavoriteTrackMutation } = tracksApi
 
 
 

@@ -1,4 +1,4 @@
-const url = "https://skypro-music-api.skyeng.tech";
+const url = "https://webdev-music-003b5b991590.herokuapp.com";
 
 export function signup({ email, password, username }) {
     return fetch(url + "/user/signup/", {
