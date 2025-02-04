@@ -109,10 +109,10 @@ export function CenterBlock({
               {isLoading
                 ? data.map((d, i) => (
                   <PlaylistTrack key={i}>
-                    <img src="img/PlayList.svg" alt="" />
+                    <img src="/img/PlayList.svg" alt="" />
                   </PlaylistTrack>
                 ))
-                : tracks.map((elem, index) => (
+                : tracks.data.map((elem, index) => (
                   <Track
                     key={index}
                     track={elem}

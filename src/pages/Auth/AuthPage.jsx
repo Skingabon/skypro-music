@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./authPage.styled.jsx";
 import React, { useEffect, useState } from "react";
-import { signIn, signup } from "../../Api/auth.js";
+import { accessToken, signIn, signup } from "../../Api/auth.js";
 // import { useTrackContext } from "../../context/track.jsx";
 import { useUserContext } from "../../context/user.jsx";
 
@@ -15,6 +15,7 @@ export function AuthPage({ isLoginMode = false }) {
     const { setLSandState } = useUserContext();
 
 
+
     const handleLogin = async ({ email, password }) => {
         //  alert(`Выполняется вход: ${email} ${password}`);
         // setError("Неизвестная ошибка входа");
@@ -25,15 +26,16 @@ export function AuthPage({ isLoginMode = false }) {
         }
 
         signIn({ email, password }).then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.error) {
                 setError(data.error)
                 return
             }
-           
-            setLSandState(data.response)
-            navigate("/")
 
+            accessToken({ email, password }).then((res) => {
+                setLSandState({...data.response, res} )
+                navigate("/")
+            })
         })
 
 

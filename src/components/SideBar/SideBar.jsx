@@ -11,7 +11,7 @@ const {user, resetUser} = useUserContext();
   return (
     <S.MainSidebar>
       <S.SidebarPersonal>
-        <S.SidebarPersonalName>{user.username}</S.SidebarPersonalName>
+        <S.SidebarPersonalName>{user.email}</S.SidebarPersonalName>
         <S.SidebarIcon onClick={resetUser}>
           <a href="/login">
           <svg alt="logout">
